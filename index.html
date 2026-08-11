@@ -1,973 +1,1849 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>خِدمة | لوحة التحكم</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-    <style>
-
-        :root {
-            --green-900:#064E3B;
-            --green-800:#065F46;
-            --green-700:#047857;
-            --green-600:#059669;
-            --green-500:#10B981;
-            --green-400:#34D399;
-            --green-100:#D1FAE5;
-            --green-50:#ECFDF5;
-
-            --dark:#0F172A;
-            --gray:#64748B;
-            --border:#E2E8F0;
-            --bg:#F8FAFC;
-            --white:#FFFFFF;
-
-            --danger:#DC2626;
-        }
-
-        * {
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
-            -webkit-tap-highlight-color:transparent;
-        }
-
-        body {
-            min-height:100vh;
-            background:
-                radial-gradient(
-                    circle at top right,
-                    #D1FAE5,
-                    transparent 35%
-                ),
-                #F8FAFC;
-
-            font-family:'Tajawal',sans-serif;
-            color:var(--dark);
-        }
-
-        h1,h2,h3,h4 {
-            font-family:'Cairo',sans-serif;
-        }
-
-        button,
-        input {
-            font-family:inherit;
-        }
-
-        /* =========================
-           LOGIN
-        ========================= */
-
-        #loginPage {
-            min-height:100vh;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            padding:20px;
-        }
-
-        .login-card {
-            width:100%;
-            max-width:420px;
-
-            background:rgba(255,255,255,.94);
-
-            border:1px solid rgba(255,255,255,.8);
-
-            border-radius:28px;
-
-            padding:32px 25px;
-
-            box-shadow:
-                0 25px 70px rgba(6,78,59,.12);
-
-            backdrop-filter:blur(20px);
-        }
-
-        .logo {
-            width:78px;
-            height:78px;
-
-            margin:0 auto 18px;
-
-            border-radius:24px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green-500),
-                    var(--green-800)
-                );
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            color:white;
-
-            font-family:'Cairo';
-            font-size:28px;
-            font-weight:900;
-
-            box-shadow:
-                0 15px 30px rgba(5,150,105,.25);
-        }
-
-        .login-title {
-            text-align:center;
-        }
-
-        .login-title h1 {
-            font-size:23px;
-            font-weight:900;
-        }
-
-        .login-title p {
-            color:var(--gray);
-            font-size:12px;
-            margin-top:5px;
-        }
-
-        .admin-badge {
-            width:max-content;
-
-            margin:16px auto 25px;
-
-            padding:7px 12px;
-
-            border-radius:20px;
-
-            background:var(--green-50);
-            color:var(--green-700);
-
-            font-size:11px;
-            font-weight:800;
-        }
-
-        .form-group {
-            margin-bottom:16px;
-        }
-
-        .form-group label {
-            display:block;
-
-            margin-bottom:7px;
-
-            font-size:12px;
-            font-weight:800;
-        }
-
-        .input {
-            width:100%;
-
-            height:52px;
-
-            padding:0 15px;
-
-            border-radius:14px;
-
-            border:1px solid var(--border);
-
-            background:#fff;
-
-            outline:none;
-
-            font-size:13px;
-
-            direction:ltr;
-            text-align:left;
-
-            transition:.2s;
-        }
-
-        .input:focus {
-            border-color:var(--green-500);
-
-            box-shadow:
-                0 0 0 4px rgba(16,185,129,.08);
-        }
-
-        .login-button {
-            width:100%;
-
-            height:53px;
-
-            border:0;
-
-            border-radius:15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green-500),
-                    var(--green-700)
-                );
-
-            color:white;
-
-            font-family:'Cairo';
-
-            font-size:14px;
-            font-weight:900;
-
-            cursor:pointer;
-
-            box-shadow:
-                0 10px 25px rgba(5,150,105,.22);
-
-            transition:.2s;
-        }
-
-        .login-button:active {
-            transform:scale(.98);
-        }
-
-        .login-button:disabled {
-            opacity:.65;
-            cursor:not-allowed;
-        }
-
-        .error {
-            display:none;
-
-            background:#FEF2F2;
-            color:#B91C1C;
-
-            border:1px solid #FECACA;
-
-            border-radius:12px;
-
-            padding:11px;
-
-            margin-bottom:15px;
-
-            font-size:11px;
-
-            line-height:1.7;
-
-            text-align:center;
-        }
-
-        .footer-note {
-            text-align:center;
-
-            margin-top:20px;
-
-            color:#94A3B8;
-
-            font-size:10px;
-        }
-
-        /* =========================
-           ADMIN
-        ========================= */
-
-        #adminPage {
-            display:none;
-
-            min-height:100vh;
-        }
-
-        .admin-header {
-            background:white;
-
-            border-bottom:1px solid var(--border);
-
-            padding:18px 20px;
-
-            display:flex;
-
-            align-items:center;
-
-            justify-content:space-between;
-
-            position:sticky;
-            top:0;
-
-            z-index:20;
-        }
-
-        .brand {
-            display:flex;
-            align-items:center;
-            gap:10px;
-        }
-
-        .brand-logo {
-            width:43px;
-            height:43px;
-
-            border-radius:13px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green-500),
-                    var(--green-800)
-                );
-
-            color:white;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            font-family:'Cairo';
-            font-weight:900;
-        }
-
-        .brand h2 {
-            font-size:15px;
-        }
-
-        .brand p {
-            font-size:10px;
-            color:var(--gray);
-        }
-
-        .logout {
-            border:0;
-
-            background:#FEF2F2;
-
-            color:var(--danger);
-
-            padding:9px 12px;
-
-            border-radius:11px;
-
-            font-size:11px;
-
-            font-weight:800;
-
-            cursor:pointer;
-        }
-
-        .admin-content {
-            width:100%;
-            max-width:1100px;
-
-            margin:auto;
-
-            padding:25px 18px 50px;
-        }
-
-        .welcome {
-            margin-bottom:22px;
-        }
-
-        .welcome h1 {
-            font-size:23px;
-            font-weight:900;
-        }
-
-        .welcome p {
-            color:var(--gray);
-            font-size:12px;
-            margin-top:4px;
-        }
-
-        .dashboard-grid {
-            display:grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap:14px;
-
-            margin-bottom:25px;
-        }
-
-        .stat {
-            background:white;
-
-            border:1px solid var(--border);
-
-            border-radius:18px;
-
-            padding:18px;
-
-            box-shadow:
-                0 6px 20px rgba(15,23,42,.04);
-        }
-
-        .stat-icon {
-            width:40px;
-            height:40px;
-
-            border-radius:12px;
-
-            background:var(--green-50);
-
-            color:var(--green-700);
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            margin-bottom:12px;
-        }
-
-        .stat strong {
-            display:block;
-
-            font-size:23px;
-            font-family:'Cairo';
-        }
-
-        .stat span {
-            color:var(--gray);
-            font-size:11px;
-        }
-
-        .coming {
-            background:white;
-
-            border:1px solid var(--border);
-
-            border-radius:22px;
-
-            padding:25px;
-
-            text-align:center;
-        }
-
-        .coming-icon {
-            width:65px;
-            height:65px;
-
-            margin:auto;
-
-            border-radius:20px;
-
-            background:var(--green-50);
-
-            color:var(--green-600);
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-        }
-
-        .coming h2 {
-            margin-top:14px;
-
-            font-size:18px;
-        }
-
-        .coming p {
-            color:var(--gray);
-
-            font-size:12px;
-
-            line-height:1.8;
-
-            margin-top:6px;
-        }
-
-        @media(max-width:650px) {
-
-            .dashboard-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-
-        }
-
-        @media(max-width:400px) {
-
-            .login-card {
-                padding:28px 20px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>خِدمة | لوحة الإدارة</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --g900:#064e3b;
+    --g800:#065f46;
+    --g700:#047857;
+    --g600:#059669;
+    --g500:#10b981;
+    --g400:#34d399;
+    --g100:#d1fae5;
+    --g50:#ecfdf5;
+
+    --dark:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --bg:#f6faf8;
+    --white:#fff;
+    --red:#dc2626;
+    --orange:#d97706;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right,#d1fae5,transparent 32%),
+        var(--bg);
+    color:var(--dark);
+    font-family:'Tajawal',sans-serif;
+}
+
+h1,h2,h3,h4,button{
+    font-family:'Cairo',sans-serif;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,.96);
+    border:1px solid #fff;
+    border-radius:28px;
+    padding:32px 25px;
+    box-shadow:0 25px 70px rgba(6,78,59,.14);
+}
+
+.logo{
+    width:78px;
+    height:78px;
+    margin:auto;
+    border-radius:24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,var(--g400),var(--g800));
+    color:#fff;
+    font-size:30px;
+    font-weight:900;
+    font-family:'Cairo';
+    box-shadow:0 15px 30px rgba(5,150,105,.25);
+}
+
+.login-title{
+    text-align:center;
+    margin-top:16px;
+}
+
+.login-title h1{
+    font-size:24px;
+}
+
+.login-title p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+.badge{
+    width:max-content;
+    margin:18px auto 24px;
+    padding:7px 13px;
+    border-radius:30px;
+    background:var(--g50);
+    color:var(--g700);
+    font-size:11px;
+    font-weight:800;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:12px;
+    font-weight:800;
+}
+
+.input,
+.select,
+.textarea{
+    width:100%;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:14px;
+    outline:none;
+    padding:13px 14px;
+    font-family:'Tajawal';
+    font-size:13px;
+    color:var(--dark);
+}
+
+.input{
+    height:50px;
+}
+
+.textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus{
+    border-color:var(--g500);
+    box-shadow:0 0 0 4px rgba(16,185,129,.08);
+}
+
+.login-btn,
+.primary-btn{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    color:#fff;
+    background:linear-gradient(135deg,var(--g500),var(--g700));
+    font-weight:900;
+    padding:14px;
+    box-shadow:0 10px 25px rgba(5,150,105,.2);
+}
+
+.login-btn:disabled{
+    opacity:.6;
+}
+
+.error{
+    display:none;
+    background:#fef2f2;
+    color:#b91c1c;
+    border:1px solid #fecaca;
+    border-radius:12px;
+    padding:10px;
+    font-size:11px;
+    text-align:center;
+    margin-bottom:14px;
+}
+
+/* ================= ADMIN ================= */
+
+#adminPage{
+    display:none;
+}
+
+.header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:15px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo{
+    width:44px;
+    height:44px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--g400),var(--g800));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:18px;
+}
+
+.brand h2{
+    font-size:15px;
+}
+
+.brand p{
+    color:var(--muted);
+    font-size:10px;
+}
+
+.logout{
+    border:0;
+    border-radius:11px;
+    padding:9px 13px;
+    color:var(--red);
+    background:#fef2f2;
+    font-size:11px;
+    font-weight:800;
+}
+
+.content{
+    max-width:1100px;
+    margin:auto;
+    padding:25px 18px 60px;
+}
+
+.welcome{
+    margin-bottom:22px;
+}
+
+.welcome h1{
+    font-size:23px;
+}
+
+.welcome p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:22px;
+}
+
+.stat{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:17px;
+    box-shadow:0 6px 20px rgba(15,23,42,.04);
+}
+
+.stat-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:var(--g50);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.stat strong{
+    display:block;
+    font-size:23px;
+    font-family:'Cairo';
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* TOOLBAR */
+
+.toolbar{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:15px;
+}
+
+.toolbar-top{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:13px;
+}
+
+.toolbar h2{
+    font-size:17px;
+}
+
+.add-btn{
+    border:0;
+    background:var(--g700);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.search{
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    height:46px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:0 15px;
+    outline:none;
+    font-family:'Tajawal';
+}
+
+.search input:focus{
+    border-color:var(--g500);
+}
+
+/* TECHNICIANS */
+
+.list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:19px;
+    padding:16px;
+    box-shadow:0 5px 18px rgba(15,23,42,.04);
+}
+
+.card-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--g400),var(--g700));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cairo';
+    font-weight:900;
+    flex-shrink:0;
+}
+
+.tech-info{
+    flex:1;
+}
+
+.tech-info h3{
+    font-size:15px;
+}
+
+.tech-info p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.status{
+    font-size:9px;
+    font-weight:800;
+    padding:5px 8px;
+    border-radius:20px;
+}
+
+.status.active{
+    background:var(--g50);
+    color:var(--g700);
+}
+
+.status.off{
+    background:#f1f5f9;
+    color:#64748b;
+}
+
+.details{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid #f1f5f9;
+}
+
+.detail{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 0;
+    font-size:11px;
+}
+
+.detail span{
+    color:var(--muted);
+}
+
+.detail strong{
+    font-weight:800;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin-top:13px;
+}
+
+.action{
+    border:0;
+    border-radius:10px;
+    padding:9px 5px;
+    font-size:9px;
+    font-weight:800;
+}
+
+.call{
+    background:var(--g50);
+    color:var(--g700);
+}
+
+.edit{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.toggle{
+    background:#fff7ed;
+    color:var(--orange);
+}
+
+.delete{
+    background:#fef2f2;
+    color:var(--red);
+}
+
+.empty{
+    background:#fff;
+    border:1px dashed var(--border);
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    color:var(--muted);
+    grid-column:1/-1;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    z-index:100;
+    backdrop-filter:blur(5px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:550px;
+    max-height:92vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:24px;
+    padding:22px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.modal-header h2{
+    font-size:18px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:10px;
+    background:#f1f5f9;
+    font-size:18px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.form-actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.cancel{
+    flex:1;
+    border:0;
+    border-radius:13px;
+    background:#f1f5f9;
+    color:var(--dark);
+    padding:13px;
+    font-weight:800;
+}
+
+.save{
+    flex:2;
+    border:0;
+    border-radius:13px;
+    background:var(--g700);
+    color:#fff;
+    padding:13px;
+    font-weight:900;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#0f172a;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:13px;
+    font-size:11px;
+    z-index:200;
+    transition:.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.toast.show{
+    transform:translateX(-50%) translateY(0);
+}
+
+@media(max-width:700px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats .stat:last-child{
+        grid-column:1/-1;
+    }
+
+    .list{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:450px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .actions{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .toolbar-top{
+        align-items:flex-start;
+    }
+}
+</style>
 </head>
 
 <body>
 
-
-<!-- =========================
-     LOGIN PAGE
-========================= -->
+<!-- ================= LOGIN ================= -->
 
 <section id="loginPage">
 
-    <div class="login-card">
+<div class="login-card">
 
-        <div class="logo">
-            خ
+    <div class="logo">خ</div>
+
+    <div class="login-title">
+        <h1>خِدمة</h1>
+        <p>منصة الخدمات المنزلية</p>
+    </div>
+
+    <div class="badge">
+        🔐 لوحة الإدارة
+    </div>
+
+    <div id="loginError" class="error"></div>
+
+    <form id="loginForm">
+
+        <div class="form-group">
+            <label>البريد الإلكتروني</label>
+
+            <input
+                id="email"
+                class="input"
+                type="email"
+                placeholder="البريد الإلكتروني"
+                required>
         </div>
 
-        <div class="login-title">
+        <div class="form-group">
+            <label>كلمة المرور</label>
 
-            <h1>
-                خِدمة
-            </h1>
-
-            <p>
-                منصة الخدمات المنزلية
-            </p>
-
+            <input
+                id="password"
+                class="input"
+                type="password"
+                placeholder="كلمة المرور"
+                required>
         </div>
 
-        <div class="admin-badge">
-            🔐 دخول لوحة الإدارة
-        </div>
+        <button id="loginButton" class="login-btn">
+            تسجيل الدخول
+        </button>
+
+    </form>
+
+</div>
+
+</section>
 
 
-        <div id="loginError" class="error">
-            بيانات الدخول غير صحيحة
-        </div>
+<!-- ================= ADMIN ================= -->
 
+<section id="adminPage">
 
-        <form id="loginForm">
+<header class="header">
 
-            <div class="form-group">
+<div class="header-inner">
 
-                <label>
-                    البريد الإلكتروني
-                </label>
+    <div class="brand">
 
-                <input
-                    id="email"
-                    class="input"
-                    type="email"
-                    placeholder="admin@example.com"
-                    autocomplete="username"
-                    required>
+        <div class="brand-logo">خ</div>
 
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    كلمة المرور
-                </label>
-
-                <input
-                    id="password"
-                    class="input"
-                    type="password"
-                    placeholder="••••••••"
-                    autocomplete="current-password"
-                    required>
-
-            </div>
-
-
-            <button
-                id="loginButton"
-                class="login-button"
-                type="submit">
-
-                تسجيل الدخول
-
-            </button>
-
-        </form>
-
-
-        <div class="footer-note">
-            لوحة الإدارة محمية بواسطة Firebase
+        <div>
+            <h2>خِدمة</h2>
+            <p>لوحة إدارة المنصة</p>
         </div>
 
     </div>
 
-</section>
+    <button id="logoutButton" class="logout">
+        تسجيل الخروج
+    </button>
+
+</div>
+
+</header>
 
 
+<main class="content">
 
-<!-- =========================
-     ADMIN PAGE
-========================= -->
+<div class="welcome">
 
-<section id="adminPage">
+    <h1>أهلاً بك في لوحة التحكم 👋</h1>
 
-    <header class="admin-header">
+    <p>
+        إدارة الفنيين والخدمات من مكان واحد.
+    </p>
 
-        <div class="brand">
-
-            <div class="brand-logo">
-                خ
-            </div>
-
-            <div>
-
-                <h2>
-                    خِدمة
-                </h2>
-
-                <p>
-                    لوحة التحكم
-                </p>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <button
-            id="logoutButton"
-            class="logout">
+<!-- STATS -->
 
-            تسجيل الخروج
+<div class="stats">
 
+    <div class="stat">
+
+        <div class="stat-icon">👷</div>
+
+        <strong id="totalCount">0</strong>
+
+        <span>إجمالي الفنيين</span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">🟢</div>
+
+        <strong id="activeCount">0</strong>
+
+        <span>الفنيين المتاحين</span>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">🛠️</div>
+
+        <strong id="serviceCount">0</strong>
+
+        <span>الخدمات</span>
+
+    </div>
+
+</div>
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+    <div class="toolbar-top">
+
+        <h2>الفنيين</h2>
+
+        <button id="addButton" class="add-btn">
+            ＋ إضافة فني
         </button>
 
-    </header>
+    </div>
+
+    <div class="search">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="ابحث باسم الفني أو رقم الهاتف أو الخدمة...">
+
+    </div>
+
+</div>
 
 
-    <main class="admin-content">
+<!-- LIST -->
 
-        <div class="welcome">
+<div id="techniciansList" class="list">
 
-            <h1>
-                أهلاً بك في لوحة التحكم 👋
-            </h1>
+    <div class="empty">
+        جاري تحميل الفنيين...
+    </div>
 
-            <p>
-                من هنا ستتمكن من إدارة الفنيين والخدمات.
-            </p>
+</div>
 
-        </div>
-
-
-        <div class="dashboard-grid">
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-
-                    👷
-
-                </div>
-
-                <strong id="technicianCount">
-                    0
-                </strong>
-
-                <span>
-                    الفنيين
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-
-                    🛠️
-
-                </div>
-
-                <strong>
-                    0
-                </strong>
-
-                <span>
-                    الخدمات
-                </span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-
-                    🟢
-
-                </div>
-
-                <strong>
-                    0
-                </strong>
-
-                <span>
-                    الفنيين المتاحين
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="coming">
-
-            <div class="coming-icon">
-
-                <svg width="32"
-                     height="32"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8">
-
-                    <path d="M12 5v14"/>
-                    <path d="M5 12h14"/>
-
-                </svg>
-
-            </div>
-
-            <h2>
-                إدارة الفنيين
-            </h2>
-
-            <p>
-                الخطوة التالية سنضيف منها الفنيين
-                بالاسم ورقم الهاتف والخدمة والمنطقة
-                والصورة والتقييم وجميع البيانات.
-            </p>
-
-        </div>
-
-    </main>
+</main>
 
 </section>
 
 
+<!-- ================= MODAL ================= -->
+
+<div id="modal" class="modal">
+
+<div class="modal-box">
+
+    <div class="modal-header">
+
+        <h2 id="modalTitle">
+            إضافة فني جديد
+        </h2>
+
+        <button id="closeModal" class="close">
+            ×
+        </button>
+
+    </div>
+
+
+    <form id="technicianForm">
+
+        <input
+            type="hidden"
+            id="editingId">
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>اسم الفني *</label>
+
+                <input
+                    id="techName"
+                    class="input"
+                    placeholder="مثال: أحمد حسن"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>رقم الموبايل *</label>
+
+                <input
+                    id="techPhone"
+                    class="input"
+                    type="tel"
+                    placeholder="01xxxxxxxxx"
+                    dir="ltr"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>الخدمة *</label>
+
+                <select id="techService" class="select" required>
+
+                    <option value="">
+                        اختر الخدمة
+                    </option>
+
+                    <option>سباكة</option>
+                    <option>كهرباء</option>
+                    <option>تكييف</option>
+                    <option>نجارة</option>
+                    <option>نقاشة ودهانات</option>
+                    <option>نظافة</option>
+                    <option>نقل عفش</option>
+                    <option>صيانة أجهزة</option>
+                    <option>ألوميتال</option>
+                    <option>زجاج</option>
+                    <option>حدادة</option>
+                    <option>أخرى</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>المحافظة *</label>
+
+                <input
+                    id="techGovernorate"
+                    class="input"
+                    placeholder="مثال: المنيا"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>المنطقة *</label>
+
+                <input
+                    id="techArea"
+                    class="input"
+                    placeholder="مثال: سمالوط"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>السعر يبدأ من</label>
+
+                <input
+                    id="techPrice"
+                    class="input"
+                    type="number"
+                    min="0"
+                    placeholder="150">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>التقييم</label>
+
+                <input
+                    id="techRating"
+                    class="input"
+                    type="number"
+                    min="0"
+                    max="5"
+                    step="0.1"
+                    value="5">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>الحالة</label>
+
+                <select id="techActive" class="select">
+
+                    <option value="true">
+                        🟢 متاح
+                    </option>
+
+                    <option value="false">
+                        ⚪ غير متاح
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>نبذة عن الفني</label>
+
+                <textarea
+                    id="techDescription"
+                    class="textarea"
+                    placeholder="اكتب نبذة قصيرة عن خبرة الفني..."></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                id="cancelButton"
+                class="cancel">
+
+                إلغاء
+
+            </button>
+
+            <button
+                type="submit"
+                id="saveButton"
+                class="save">
+
+                حفظ الفني
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<!-- ================= FIREBASE ================= -->
 
 <script type="module">
 
-    import {
-        initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-    import {
-        getAuth,
-        signInWithEmailAndPassword,
-        onAuthStateChanged,
-        signOut
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+/* ================= CONFIG ================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+
+    authDomain:
+        "khedma-4e607.firebaseapp.com",
+
+    projectId:
+        "khedma-4e607",
+
+    storageBucket:
+        "khedma-4e607.firebasestorage.app",
+
+    messagingSenderId:
+        "541874029326",
+
+    appId:
+        "1:541874029326:web:41c7154c184f70dcce4d5f",
+
+    measurementId:
+        "G-WWB14VL9G3"
+};
 
 
-    /* =========================
-       FIREBASE CONFIG
-    ========================= */
+/* ================= FIREBASE ================= */
 
-    const firebaseConfig = {
+const app =
+    initializeApp(firebaseConfig);
 
-        apiKey:
-            "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+const auth =
+    getAuth(app);
 
-        authDomain:
-            "khedma-4e607.firebaseapp.com",
+const db =
+    getFirestore(app);
 
-        projectId:
-            "khedma-4e607",
 
-        storageBucket:
-            "khedma-4e607.firebasestorage.app",
+/* ================= ELEMENTS ================= */
 
-        messagingSenderId:
-            "541874029326",
+const loginPage =
+    document.getElementById("loginPage");
 
-        appId:
-            "1:541874029326:web:41c7154c184f70dcce4d5f",
+const adminPage =
+    document.getElementById("adminPage");
 
-        measurementId:
-            "G-WWB14VL9G3"
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const loginError =
+    document.getElementById("loginError");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const modal =
+    document.getElementById("modal");
+
+const addButton =
+    document.getElementById("addButton");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const cancelButton =
+    document.getElementById("cancelButton");
+
+const technicianForm =
+    document.getElementById("technicianForm");
+
+const techniciansList =
+    document.getElementById("techniciansList");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const totalCount =
+    document.getElementById("totalCount");
+
+const activeCount =
+    document.getElementById("activeCount");
+
+const serviceCount =
+    document.getElementById("serviceCount");
+
+
+let technicians = [];
+
+
+/* ================= AUTH ================= */
+
+onAuthStateChanged(auth, user => {
+
+    if(user){
+
+        loginPage.style.display = "none";
+        adminPage.style.display = "block";
+
+        loadTechnicians();
+
+    }else{
+
+        loginPage.style.display = "flex";
+        adminPage.style.display = "none";
+
+    }
+
+});
+
+
+/* ================= LOGIN ================= */
+
+loginForm.addEventListener("submit", async e => {
+
+    e.preventDefault();
+
+    loginError.style.display = "none";
+
+    loginButton.disabled = true;
+
+    loginButton.textContent =
+        "جاري تسجيل الدخول...";
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            document.getElementById("email").value.trim(),
+            document.getElementById("password").value
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        loginError.textContent =
+            getAuthError(error.code);
+
+        loginError.style.display =
+            "block";
+
+    }
+
+    loginButton.disabled = false;
+
+    loginButton.textContent =
+        "تسجيل الدخول";
+
+});
+
+
+/* ================= LOGOUT ================= */
+
+logoutButton.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+});
+
+
+/* ================= LOAD ================= */
+
+async function loadTechnicians(){
+
+    techniciansList.innerHTML = `
+        <div class="empty">
+            جاري تحميل الفنيين...
+        </div>
+    `;
+
+    try{
+
+        const snapshot =
+            await getDocs(
+                collection(db,"technicians")
+            );
+
+        technicians = [];
+
+        snapshot.forEach(item => {
+
+            technicians.push({
+
+                id:item.id,
+                ...item.data()
+
+            });
+
+        });
+
+        updateStats();
+
+        renderTechnicians();
+
+    }catch(error){
+
+        console.error(error);
+
+        techniciansList.innerHTML = `
+            <div class="empty">
+                حدث خطأ أثناء تحميل البيانات.
+                <br><br>
+                ${error.message}
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ================= STATS ================= */
+
+function updateStats(){
+
+    totalCount.textContent =
+        technicians.length;
+
+    activeCount.textContent =
+        technicians.filter(t => t.active === true).length;
+
+    const services =
+        new Set(
+            technicians
+            .map(t => t.service)
+            .filter(Boolean)
+        );
+
+    serviceCount.textContent =
+        services.size;
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderTechnicians(){
+
+    const query =
+        searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const filtered =
+        technicians.filter(t => {
+
+            const text = [
+
+                t.name,
+                t.phone,
+                t.service,
+                t.governorate,
+                t.area
+
+            ].join(" ").toLowerCase();
+
+            return text.includes(query);
+
+        });
+
+
+    if(filtered.length === 0){
+
+        techniciansList.innerHTML = `
+            <div class="empty">
+
+                ${
+                    technicians.length === 0
+                    ? "لا يوجد فنيون حتى الآن.<br>اضغط «إضافة فني» للبدء."
+                    : "لا توجد نتائج مطابقة للبحث."
+                }
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    techniciansList.innerHTML =
+        filtered.map(t => technicianHTML(t)).join("");
+
+
+    filtered.forEach(t => {
+
+        document
+            .getElementById(`call-${t.id}`)
+            ?.addEventListener("click", () => {
+
+                window.location.href =
+                    `tel:${t.phone}`;
+
+            });
+
+
+        document
+            .getElementById(`edit-${t.id}`)
+            ?.addEventListener("click", () => {
+
+                openEdit(t);
+
+            });
+
+
+        document
+            .getElementById(`toggle-${t.id}`)
+            ?.addEventListener("click", () => {
+
+                toggleTechnician(t);
+
+            });
+
+
+        document
+            .getElementById(`delete-${t.id}`)
+            ?.addEventListener("click", () => {
+
+                deleteTechnician(t);
+
+            });
+
+    });
+
+}
+
+
+/* ================= CARD ================= */
+
+function technicianHTML(t){
+
+    const initials =
+        getInitials(t.name);
+
+    return `
+
+        <div class="card">
+
+            <div class="card-top">
+
+                <div class="avatar">
+                    ${initials}
+                </div>
+
+                <div class="tech-info">
+
+                    <h3>
+                        ${escapeHTML(t.name || "")}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(t.service || "بدون خدمة")}
+                    </p>
+
+                </div>
+
+                <span class="status ${t.active ? "active":"off"}">
+
+                    ${t.active ? "متاح":"غير متاح"}
+
+                </span>
+
+            </div>
+
+
+            <div class="details">
+
+                <div class="detail">
+                    <span>📱 الهاتف</span>
+                    <strong>${escapeHTML(t.phone || "-")}</strong>
+                </div>
+
+                <div class="detail">
+                    <span>📍 المنطقة</span>
+                    <strong>
+                        ${escapeHTML(t.governorate || "")}
+                        -
+                        ${escapeHTML(t.area || "")}
+                    </strong>
+                </div>
+
+                <div class="detail">
+                    <span>💰 السعر</span>
+                    <strong>
+                        ${
+                            t.price
+                            ? "يبدأ من " + escapeHTML(String(t.price)) + " ج.م"
+                            : "غير محدد"
+                        }
+                    </strong>
+                </div>
+
+                <div class="detail">
+                    <span>⭐ التقييم</span>
+                    <strong>
+                        ${t.rating ?? 5}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    id="call-${t.id}"
+                    class="action call">
+
+                    📞 اتصال
+
+                </button>
+
+                <button
+                    id="edit-${t.id}"
+                    class="action edit">
+
+                    ✏️ تعديل
+
+                </button>
+
+                <button
+                    id="toggle-${t.id}"
+                    class="action toggle">
+
+                    ${t.active ? "⏸ إيقاف":"▶ تفعيل"}
+
+                </button>
+
+                <button
+                    id="delete-${t.id}"
+                    class="action delete">
+
+                    🗑 حذف
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ================= OPEN ADD ================= */
+
+addButton.addEventListener("click", () => {
+
+    technicianForm.reset();
+
+    document.getElementById("editingId").value = "";
+
+    document.getElementById("modalTitle").textContent =
+        "إضافة فني جديد";
+
+    document.getElementById("techRating").value = "5";
+
+    document.getElementById("techActive").value = "true";
+
+    modal.classList.add("show");
+
+});
+
+
+/* ================= CLOSE ================= */
+
+function closeModalFunction(){
+
+    modal.classList.remove("show");
+
+}
+
+closeModal.addEventListener(
+    "click",
+    closeModalFunction
+);
+
+cancelButton.addEventListener(
+    "click",
+    closeModalFunction
+);
+
+modal.addEventListener("click", e => {
+
+    if(e.target === modal){
+
+        closeModalFunction();
+
+    }
+
+});
+
+
+/* ================= SAVE ================= */
+
+technicianForm.addEventListener("submit", async e => {
+
+    e.preventDefault();
+
+    const id =
+        document.getElementById("editingId").value;
+
+
+    const data = {
+
+        name:
+            document.getElementById("techName").value.trim(),
+
+        phone:
+            document.getElementById("techPhone").value.trim(),
+
+        service:
+            document.getElementById("techService").value,
+
+        governorate:
+            document.getElementById("techGovernorate").value.trim(),
+
+        area:
+            document.getElementById("techArea").value.trim(),
+
+        price:
+            Number(document.getElementById("techPrice").value) || 0,
+
+        rating:
+            Number(document.getElementById("techRating").value) || 0,
+
+        description:
+            document.getElementById("techDescription").value.trim(),
+
+        active:
+            document.getElementById("techActive").value === "true"
+
     };
 
 
-    /* =========================
-       INITIALIZE
-    ========================= */
+    const saveButton =
+        document.getElementById("saveButton");
 
-    const app =
-        initializeApp(firebaseConfig);
+    saveButton.disabled = true;
 
-
-    const auth =
-        getAuth(app);
+    saveButton.textContent =
+        "جاري الحفظ...";
 
 
-    /* =========================
-       ELEMENTS
-    ========================= */
+    try{
 
-    const loginPage =
-        document.getElementById("loginPage");
+        if(id){
 
-    const adminPage =
-        document.getElementById("adminPage");
+            await updateDoc(
+                doc(db,"technicians",id),
+                data
+            );
 
-    const loginForm =
-        document.getElementById("loginForm");
+            showToast("تم تعديل بيانات الفني ✓");
 
-    const loginButton =
-        document.getElementById("loginButton");
+        }else{
 
-    const loginError =
-        document.getElementById("loginError");
+            await addDoc(
+                collection(db,"technicians"),
+                {
+                    ...data,
+                    createdAt:serverTimestamp()
+                }
+            );
 
-    const logoutButton =
-        document.getElementById("logoutButton");
-
-
-    /* =========================
-       AUTH STATE
-    ========================= */
-
-    onAuthStateChanged(
-        auth,
-        user => {
-
-            if(user){
-
-                loginPage.style.display =
-                    "none";
-
-                adminPage.style.display =
-                    "block";
-
-            }else{
-
-                loginPage.style.display =
-                    "flex";
-
-                adminPage.style.display =
-                    "none";
-
-            }
+            showToast("تم إضافة الفني بنجاح ✓");
 
         }
-    );
 
 
-    /* =========================
-       LOGIN
-    ========================= */
+        closeModalFunction();
 
-    loginForm.addEventListener(
-        "submit",
-        async event => {
+        await loadTechnicians();
 
-            event.preventDefault();
+    }catch(error){
 
+        console.error(error);
 
-            const email =
-                document
-                .getElementById("email")
-                .value
-                .trim();
-
-
-            const password =
-                document
-                .getElementById("password")
-                .value;
-
-
-            loginError.style.display =
-                "none";
-
-
-            loginButton.disabled =
-                true;
-
-            loginButton.textContent =
-                "جاري تسجيل الدخول...";
-
-
-            try{
-
-                await signInWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
-
-
-            }catch(error){
-
-                console.error(error);
-
-
-                loginError.textContent =
-                    getArabicError(error.code);
-
-
-                loginError.style.display =
-                    "block";
-
-            }
-
-
-            loginButton.disabled =
-                false;
-
-            loginButton.textContent =
-                "تسجيل الدخول";
-
-        }
-    );
-
-
-    /* =========================
-       LOGOUT
-    ========================= */
-
-    logoutButton.addEventListener(
-        "click",
-        async () => {
-
-            await signOut(auth);
-
-        }
-    );
-
-
-    /* =========================
-       ERROR MESSAGES
-    ========================= */
-
-    function getArabicError(code){
-
-        switch(code){
-
-            case "auth/invalid-email":
-                return "البريد الإلكتروني غير صحيح.";
-
-            case "auth/user-not-found":
-                return "لا يوجد حساب بهذا البريد الإلكتروني.";
-
-            case "auth/wrong-password":
-                return "كلمة المرور غير صحيحة.";
-
-            case "auth/invalid-credential":
-                return "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-
-            case "auth/too-many-requests":
-                return "تم إجراء محاولات كثيرة. حاول مرة أخرى لاحقًا.";
-
-            case "auth/network-request-failed":
-                return "حدثت مشكلة في الاتصال بالإنترنت.";
-
-            default:
-                return "تعذر تسجيل الدخول. تأكد من بيانات الحساب.";
-
-        }
+        showToast(
+            "حدث خطأ: " + error.message
+        );
 
     }
+
+
+    saveButton.disabled = false;
+
+    saveButton.textContent =
+        "حفظ الفني";
+
+});
+
+
+/* ================= EDIT ================= */
+
+function openEdit(t){
+
+    document.getElementById("editingId").value =
+        t.id;
+
+    document.getElementById("techName").value =
+        t.name || "";
+
+    document.getElementById("techPhone").value =
+        t.phone || "";
+
+    document.getElementById("techService").value =
+        t.service || "";
+
+    document.getElementById("techGovernorate").value =
+        t.governorate || "";
+
+    document.getElementById("techArea").value =
+        t.area || "";
+
+    document.getElementById("techPrice").value =
+        t.price || "";
+
+    document.getElementById("techRating").value =
+        t.rating ?? 5;
+
+    document.getElementById("techDescription").value =
+        t.description || "";
+
+    document.getElementById("techActive").value =
+        t.active ? "true":"false";
+
+
+    document.getElementById("modalTitle").textContent =
+        "تعديل بيانات الفني";
+
+
+    modal.classList.add("show");
+
+}
+
+
+/* ================= TOGGLE ================= */
+
+async function toggleTechnician(t){
+
+    try{
+
+        await updateDoc(
+            doc(db,"technicians",t.id),
+            {
+                active:!t.active
+            }
+        );
+
+        showToast(
+            t.active
+            ? "تم إيقاف الفني"
+            : "تم تفعيل الفني"
+        );
+
+        await loadTechnicians();
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "تعذر تغيير الحالة"
+        );
+
+    }
+
+}
+
+
+/* ================= DELETE ================= */
+
+async function deleteTechnician(t){
+
+    const confirmed =
+        confirm(
+            `هل أنت متأكد من حذف الفني "${t.name}"؟`
+        );
+
+    if(!confirmed) return;
+
+
+    try{
+
+        await deleteDoc(
+            doc(db,"technicians",t.id)
+        );
+
+        showToast("تم حذف الفني ✓");
+
+        await loadTechnicians();
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "تعذر حذف الفني"
+        );
+
+    }
+
+}
+
+
+/* ================= SEARCH ================= */
+
+searchInput.addEventListener(
+    "input",
+    renderTechnicians
+);
+
+
+/* ================= HELPERS ================= */
+
+function getInitials(name){
+
+    if(!name) return "خ";
+
+    const parts =
+        name.trim().split(/\s+/);
+
+    if(parts.length >= 2){
+
+        return (
+            parts[0][0] +
+            parts[1][0]
+        );
+
+    }
+
+    return name.substring(0,2);
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+function getAuthError(code){
+
+    switch(code){
+
+        case "auth/invalid-email":
+            return "البريد الإلكتروني غير صحيح.";
+
+        case "auth/user-not-found":
+            return "الحساب غير موجود.";
+
+        case "auth/wrong-password":
+            return "كلمة المرور غير صحيحة.";
+
+        case "auth/invalid-credential":
+            return "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+        case "auth/too-many-requests":
+            return "محاولات كثيرة. حاول لاحقًا.";
+
+        case "auth/network-request-failed":
+            return "تأكد من اتصال الإنترنت.";
+
+        default:
+            return "تعذر تسجيل الدخول.";
+
+    }
+
+}
 
 </script>
 
