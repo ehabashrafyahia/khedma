@@ -4,69 +4,769 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>خِدمة | خدمات منزلية</title>
+    <title>خِدمة | لوحة التحكم</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
+
+        :root {
+            --green-900:#064E3B;
+            --green-800:#065F46;
+            --green-700:#047857;
+            --green-600:#059669;
+            --green-500:#10B981;
+            --green-400:#34D399;
+            --green-100:#D1FAE5;
+            --green-50:#ECFDF5;
+
+            --dark:#0F172A;
+            --gray:#64748B;
+            --border:#E2E8F0;
+            --bg:#F8FAFC;
+            --white:#FFFFFF;
+
+            --danger:#DC2626;
+        }
+
         * {
-            box-sizing: border-box;
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+            -webkit-tap-highlight-color:transparent;
         }
 
         body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #ECFDF5;
-            font-family: Arial, sans-serif;
+            min-height:100vh;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #D1FAE5,
+                    transparent 35%
+                ),
+                #F8FAFC;
+
+            font-family:'Tajawal',sans-serif;
+            color:var(--dark);
         }
 
-        .box {
-            background: white;
-            width: 90%;
-            max-width: 420px;
-            padding: 35px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,.08);
+        h1,h2,h3,h4 {
+            font-family:'Cairo',sans-serif;
         }
 
-        h1 {
-            color: #047857;
-            margin-bottom: 10px;
+        button,
+        input {
+            font-family:inherit;
         }
 
-        p {
-            color: #64748B;
+        /* =========================
+           LOGIN
+        ========================= */
+
+        #loginPage {
+            min-height:100vh;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            padding:20px;
         }
+
+        .login-card {
+            width:100%;
+            max-width:420px;
+
+            background:rgba(255,255,255,.94);
+
+            border:1px solid rgba(255,255,255,.8);
+
+            border-radius:28px;
+
+            padding:32px 25px;
+
+            box-shadow:
+                0 25px 70px rgba(6,78,59,.12);
+
+            backdrop-filter:blur(20px);
+        }
+
+        .logo {
+            width:78px;
+            height:78px;
+
+            margin:0 auto 18px;
+
+            border-radius:24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--green-500),
+                    var(--green-800)
+                );
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:white;
+
+            font-family:'Cairo';
+            font-size:28px;
+            font-weight:900;
+
+            box-shadow:
+                0 15px 30px rgba(5,150,105,.25);
+        }
+
+        .login-title {
+            text-align:center;
+        }
+
+        .login-title h1 {
+            font-size:23px;
+            font-weight:900;
+        }
+
+        .login-title p {
+            color:var(--gray);
+            font-size:12px;
+            margin-top:5px;
+        }
+
+        .admin-badge {
+            width:max-content;
+
+            margin:16px auto 25px;
+
+            padding:7px 12px;
+
+            border-radius:20px;
+
+            background:var(--green-50);
+            color:var(--green-700);
+
+            font-size:11px;
+            font-weight:800;
+        }
+
+        .form-group {
+            margin-bottom:16px;
+        }
+
+        .form-group label {
+            display:block;
+
+            margin-bottom:7px;
+
+            font-size:12px;
+            font-weight:800;
+        }
+
+        .input {
+            width:100%;
+
+            height:52px;
+
+            padding:0 15px;
+
+            border-radius:14px;
+
+            border:1px solid var(--border);
+
+            background:#fff;
+
+            outline:none;
+
+            font-size:13px;
+
+            direction:ltr;
+            text-align:left;
+
+            transition:.2s;
+        }
+
+        .input:focus {
+            border-color:var(--green-500);
+
+            box-shadow:
+                0 0 0 4px rgba(16,185,129,.08);
+        }
+
+        .login-button {
+            width:100%;
+
+            height:53px;
+
+            border:0;
+
+            border-radius:15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--green-500),
+                    var(--green-700)
+                );
+
+            color:white;
+
+            font-family:'Cairo';
+
+            font-size:14px;
+            font-weight:900;
+
+            cursor:pointer;
+
+            box-shadow:
+                0 10px 25px rgba(5,150,105,.22);
+
+            transition:.2s;
+        }
+
+        .login-button:active {
+            transform:scale(.98);
+        }
+
+        .login-button:disabled {
+            opacity:.65;
+            cursor:not-allowed;
+        }
+
+        .error {
+            display:none;
+
+            background:#FEF2F2;
+            color:#B91C1C;
+
+            border:1px solid #FECACA;
+
+            border-radius:12px;
+
+            padding:11px;
+
+            margin-bottom:15px;
+
+            font-size:11px;
+
+            line-height:1.7;
+
+            text-align:center;
+        }
+
+        .footer-note {
+            text-align:center;
+
+            margin-top:20px;
+
+            color:#94A3B8;
+
+            font-size:10px;
+        }
+
+        /* =========================
+           ADMIN
+        ========================= */
+
+        #adminPage {
+            display:none;
+
+            min-height:100vh;
+        }
+
+        .admin-header {
+            background:white;
+
+            border-bottom:1px solid var(--border);
+
+            padding:18px 20px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            position:sticky;
+            top:0;
+
+            z-index:20;
+        }
+
+        .brand {
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .brand-logo {
+            width:43px;
+            height:43px;
+
+            border-radius:13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--green-500),
+                    var(--green-800)
+                );
+
+            color:white;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-family:'Cairo';
+            font-weight:900;
+        }
+
+        .brand h2 {
+            font-size:15px;
+        }
+
+        .brand p {
+            font-size:10px;
+            color:var(--gray);
+        }
+
+        .logout {
+            border:0;
+
+            background:#FEF2F2;
+
+            color:var(--danger);
+
+            padding:9px 12px;
+
+            border-radius:11px;
+
+            font-size:11px;
+
+            font-weight:800;
+
+            cursor:pointer;
+        }
+
+        .admin-content {
+            width:100%;
+            max-width:1100px;
+
+            margin:auto;
+
+            padding:25px 18px 50px;
+        }
+
+        .welcome {
+            margin-bottom:22px;
+        }
+
+        .welcome h1 {
+            font-size:23px;
+            font-weight:900;
+        }
+
+        .welcome p {
+            color:var(--gray);
+            font-size:12px;
+            margin-top:4px;
+        }
+
+        .dashboard-grid {
+            display:grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:14px;
+
+            margin-bottom:25px;
+        }
+
+        .stat {
+            background:white;
+
+            border:1px solid var(--border);
+
+            border-radius:18px;
+
+            padding:18px;
+
+            box-shadow:
+                0 6px 20px rgba(15,23,42,.04);
+        }
+
+        .stat-icon {
+            width:40px;
+            height:40px;
+
+            border-radius:12px;
+
+            background:var(--green-50);
+
+            color:var(--green-700);
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            margin-bottom:12px;
+        }
+
+        .stat strong {
+            display:block;
+
+            font-size:23px;
+            font-family:'Cairo';
+        }
+
+        .stat span {
+            color:var(--gray);
+            font-size:11px;
+        }
+
+        .coming {
+            background:white;
+
+            border:1px solid var(--border);
+
+            border-radius:22px;
+
+            padding:25px;
+
+            text-align:center;
+        }
+
+        .coming-icon {
+            width:65px;
+            height:65px;
+
+            margin:auto;
+
+            border-radius:20px;
+
+            background:var(--green-50);
+
+            color:var(--green-600);
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .coming h2 {
+            margin-top:14px;
+
+            font-size:18px;
+        }
+
+        .coming p {
+            color:var(--gray);
+
+            font-size:12px;
+
+            line-height:1.8;
+
+            margin-top:6px;
+        }
+
+        @media(max-width:650px) {
+
+            .dashboard-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+        }
+
+        @media(max-width:400px) {
+
+            .login-card {
+                padding:28px 20px;
+            }
+
+        }
+
     </style>
 </head>
 
 <body>
 
-<div class="box">
 
-    <h1>خِدمة</h1>
+<!-- =========================
+     LOGIN PAGE
+========================= -->
 
-    <p>
-        منصة الخدمات المنزلية
-    </p>
+<section id="loginPage">
 
-    <p id="firebaseStatus">
-        جاري الاتصال...
-    </p>
+    <div class="login-card">
 
-</div>
+        <div class="logo">
+            خ
+        </div>
+
+        <div class="login-title">
+
+            <h1>
+                خِدمة
+            </h1>
+
+            <p>
+                منصة الخدمات المنزلية
+            </p>
+
+        </div>
+
+        <div class="admin-badge">
+            🔐 دخول لوحة الإدارة
+        </div>
+
+
+        <div id="loginError" class="error">
+            بيانات الدخول غير صحيحة
+        </div>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label>
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    id="email"
+                    class="input"
+                    type="email"
+                    placeholder="admin@example.com"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    كلمة المرور
+                </label>
+
+                <input
+                    id="password"
+                    class="input"
+                    type="password"
+                    placeholder="••••••••"
+                    autocomplete="current-password"
+                    required>
+
+            </div>
+
+
+            <button
+                id="loginButton"
+                class="login-button"
+                type="submit">
+
+                تسجيل الدخول
+
+            </button>
+
+        </form>
+
+
+        <div class="footer-note">
+            لوحة الإدارة محمية بواسطة Firebase
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ADMIN PAGE
+========================= -->
+
+<section id="adminPage">
+
+    <header class="admin-header">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                خ
+            </div>
+
+            <div>
+
+                <h2>
+                    خِدمة
+                </h2>
+
+                <p>
+                    لوحة التحكم
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="logout">
+
+            تسجيل الخروج
+
+        </button>
+
+    </header>
+
+
+    <main class="admin-content">
+
+        <div class="welcome">
+
+            <h1>
+                أهلاً بك في لوحة التحكم 👋
+            </h1>
+
+            <p>
+                من هنا ستتمكن من إدارة الفنيين والخدمات.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+
+                    👷
+
+                </div>
+
+                <strong id="technicianCount">
+                    0
+                </strong>
+
+                <span>
+                    الفنيين
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+
+                    🛠️
+
+                </div>
+
+                <strong>
+                    0
+                </strong>
+
+                <span>
+                    الخدمات
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+
+                    🟢
+
+                </div>
+
+                <strong>
+                    0
+                </strong>
+
+                <span>
+                    الفنيين المتاحين
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="coming">
+
+            <div class="coming-icon">
+
+                <svg width="32"
+                     height="32"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8">
+
+                    <path d="M12 5v14"/>
+                    <path d="M5 12h14"/>
+
+                </svg>
+
+            </div>
+
+            <h2>
+                إدارة الفنيين
+            </h2>
+
+            <p>
+                الخطوة التالية سنضيف منها الفنيين
+                بالاسم ورقم الهاتف والخدمة والمنطقة
+                والصورة والتقييم وجميع البيانات.
+            </p>
+
+        </div>
+
+    </main>
+
+</section>
+
 
 
 <script type="module">
 
-    import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
 
     const firebaseConfig = {
 
-        apiKey: "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+        apiKey:
+            "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
 
         authDomain:
             "khedma-4e607.firebaseapp.com",
@@ -88,14 +788,186 @@
     };
 
 
+    /* =========================
+       INITIALIZE
+    ========================= */
+
     const app =
         initializeApp(firebaseConfig);
 
 
-    document
-        .getElementById("firebaseStatus")
-        .textContent =
-        "تم الاتصال بـ Firebase ✓";
+    const auth =
+        getAuth(app);
+
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const loginPage =
+        document.getElementById("loginPage");
+
+    const adminPage =
+        document.getElementById("adminPage");
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const loginError =
+        document.getElementById("loginError");
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+
+    /* =========================
+       AUTH STATE
+    ========================= */
+
+    onAuthStateChanged(
+        auth,
+        user => {
+
+            if(user){
+
+                loginPage.style.display =
+                    "none";
+
+                adminPage.style.display =
+                    "block";
+
+            }else{
+
+                loginPage.style.display =
+                    "flex";
+
+                adminPage.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       LOGIN
+    ========================= */
+
+    loginForm.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            loginError.style.display =
+                "none";
+
+
+            loginButton.disabled =
+                true;
+
+            loginButton.textContent =
+                "جاري تسجيل الدخول...";
+
+
+            try{
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            }catch(error){
+
+                console.error(error);
+
+
+                loginError.textContent =
+                    getArabicError(error.code);
+
+
+                loginError.style.display =
+                    "block";
+
+            }
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.textContent =
+                "تسجيل الدخول";
+
+        }
+    );
+
+
+    /* =========================
+       LOGOUT
+    ========================= */
+
+    logoutButton.addEventListener(
+        "click",
+        async () => {
+
+            await signOut(auth);
+
+        }
+    );
+
+
+    /* =========================
+       ERROR MESSAGES
+    ========================= */
+
+    function getArabicError(code){
+
+        switch(code){
+
+            case "auth/invalid-email":
+                return "البريد الإلكتروني غير صحيح.";
+
+            case "auth/user-not-found":
+                return "لا يوجد حساب بهذا البريد الإلكتروني.";
+
+            case "auth/wrong-password":
+                return "كلمة المرور غير صحيحة.";
+
+            case "auth/invalid-credential":
+                return "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+            case "auth/too-many-requests":
+                return "تم إجراء محاولات كثيرة. حاول مرة أخرى لاحقًا.";
+
+            case "auth/network-request-failed":
+                return "حدثت مشكلة في الاتصال بالإنترنت.";
+
+            default:
+                return "تعذر تسجيل الدخول. تأكد من بيانات الحساب.";
+
+        }
+
+    }
 
 </script>
 
