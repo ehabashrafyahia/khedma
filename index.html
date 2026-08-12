@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>خِدمة | خدماتك بين إيديك</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --green-900:#064e3b;
+    --green-800:#065f46;
+    --green-700:#047857;
+    --green-600:#059669;
+    --green-500:#10b981;
+    --green-400:#34d399;
+    --green-100:#d1fae5;
+    --green-50:#ecfdf5;
+
+    --dark:#10231c;
+    --muted:#6b7c74;
+    --border:#e5eee9;
+    --bg:#f7faf8;
+    --white:#ffffff;
+
+    --shadow:0 10px 30px rgba(6,78,59,.08);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    background:#071c15;
+    font-family:'Tajawal',sans-serif;
+    color:var(--dark);
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+.app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    margin:auto;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+}
+
+.screen{
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    padding:20px 18px 10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo{
+    width:45px;
+    height:45px;
+    border-radius:15px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Cairo';
+    font-size:20px;
+    font-weight:900;
+    box-shadow:0 8px 18px rgba(5,150,105,.2);
+}
+
+.brand h1{
+    font-family:'Cairo';
+    font-size:19px;
+    font-weight:900;
+}
+
+.brand p{
+    font-size:10px;
+    color:var(--muted);
+}
+
+.location{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    background:#fff;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    margin:10px 18px 20px;
+    padding:23px 20px;
+    border-radius:24px;
+    background:
+        radial-gradient(circle at left top,rgba(52,211,153,.3),transparent 35%),
+        linear-gradient(135deg,var(--green-900),var(--green-700));
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(6,78,59,.2);
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border:25px solid rgba(255,255,255,.06);
+    border-radius:50%;
+    left:-45px;
+    bottom:-60px;
+}
+
+.hero h2{
+    font-family:'Cairo';
+    font-size:22px;
+    line-height:1.35;
+    position:relative;
+    z-index:1;
+}
+
+.hero p{
+    color:#c9f7e5;
+    font-size:12px;
+    margin-top:6px;
+    position:relative;
+    z-index:1;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+    margin:0 18px 24px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 15px;
+    box-shadow:var(--shadow);
+}
+
+.search-icon{
+    font-size:17px;
+}
+
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    font-size:13px;
+    color:var(--dark);
+    background:transparent;
+}
+
+.search-box input::placeholder{
+    color:#9aa9a2;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    margin-bottom:25px;
+}
+
+.section-head{
+    padding:0 18px 13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.section-head h2{
+    font-family:'Cairo';
+    font-size:16px;
+    font-weight:900;
+}
+
+.section-head span{
+    font-size:10px;
+    color:var(--green-700);
+    font-weight:800;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:11px;
+    padding:0 18px;
+}
+
+.service{
+    text-align:center;
+    cursor:pointer;
+}
+
+.service-icon{
+    aspect-ratio:1;
+    border-radius:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    color:var(--green-800);
+    background:linear-gradient(145deg,#fff,var(--green-50));
+    border:1px solid var(--green-100);
+    box-shadow:0 5px 15px rgba(6,78,59,.05);
+    transition:.15s;
+}
+
+.service:active .service-icon{
+    transform:scale(.94);
+}
+
+.service-name{
+    display:block;
+    margin-top:7px;
+    font-size:10px;
+    font-weight:800;
+}
+
+/* ================= TECHNICIANS ================= */
+
+.technicians{
+    padding:0 18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.tech-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:15px;
+    box-shadow:var(--shadow);
+}
+
+.tech-main{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.tech-avatar{
+    width:54px;
+    height:54px;
+    flex-shrink:0;
+    border-radius:17px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cairo';
+    font-size:17px;
+    font-weight:900;
+}
+
+.tech-info{
+    flex:1;
+}
+
+.tech-info h3{
+    font-family:'Cairo';
+    font-size:14px;
+    font-weight:900;
+}
+
+.tech-service{
+    color:var(--green-700);
+    font-size:11px;
+    font-weight:800;
+    margin-top:2px;
+}
+
+.tech-location{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
+
+.rating{
+    background:#fffbeb;
+    color:#b45309;
+    padding:5px 7px;
+    border-radius:8px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.tech-details{
+    margin-top:13px;
+    padding-top:12px;
+    border-top:1px solid #f0f4f2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.price strong{
+    color:var(--green-700);
+    font-family:'Cairo';
+    font-size:14px;
+}
+
+.actions{
+    display:flex;
+    gap:7px;
+}
+
+.action{
+    border:0;
+    border-radius:11px;
+    padding:9px 12px;
+    font-size:10px;
+    font-weight:900;
+}
+
+.call{
+    background:var(--green-700);
+    color:#fff;
+}
+
+.whatsapp{
+    background:#e9fff4;
+    color:#07814f;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    margin:0 18px;
+    background:#fff;
+    border:1px dashed var(--border);
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ================= LOADING ================= */
+
+.loading{
+    text-align:center;
+    padding:30px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    max-width:480px;
+    height:70px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(12px);
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:20;
+}
+
+.nav-item{
+    text-align:center;
+    color:#8b9a93;
+    font-size:10px;
+    font-weight:800;
+}
+
+.nav-item.active{
+    color:var(--green-700);
+}
+
+.nav-icon{
+    display:block;
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(min-width:481px){
+
+    .app{
+        box-shadow:0 0 60px rgba(0,0,0,.3);
+    }
+
+    .bottom-nav{
+        left:50%;
+        transform:translateX(-50%);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="screen">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="logo">خ</div>
+
+            <div>
+                <h1>خِدمة</h1>
+                <p>خدماتك بين إيديك</p>
+            </div>
+
+        </div>
+
+        <div class="location">
+            📍
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h2>
+            محتاج فني؟
+            <br>
+            إحنا نوفرهولك 👋
+        </h2>
+
+        <p>
+            اختار الخدمة وابحث عن الفني المناسب ليك
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <span class="search-icon">🔎</span>
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="ابحث عن خدمة أو فني أو منطقة..."
+        >
+
+    </div>
+
+
+    <!-- SERVICES -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2>الخدمات</h2>
+
+            <span id="serviceResult">
+                جميع الخدمات
+            </span>
+
+        </div>
+
+
+        <div class="services">
+
+            <div class="service" data-service="سباكة">
+                <div class="service-icon">🔧</div>
+                <span class="service-name">سباكة</span>
+            </div>
+
+            <div class="service" data-service="كهرباء">
+                <div class="service-icon">⚡</div>
+                <span class="service-name">كهرباء</span>
+            </div>
+
+            <div class="service" data-service="تكييف">
+                <div class="service-icon">❄️</div>
+                <span class="service-name">تكييف</span>
+            </div>
+
+            <div class="service" data-service="نجارة">
+                <div class="service-icon">🪚</div>
+                <span class="service-name">نجارة</span>
+            </div>
+
+            <div class="service" data-service="نقاشة ودهانات">
+                <div class="service-icon">🎨</div>
+                <span class="service-name">دهانات</span>
+            </div>
+
+            <div class="service" data-service="نظافة">
+                <div class="service-icon">🧹</div>
+                <span class="service-name">نظافة</span>
+            </div>
+
+            <div class="service" data-service="نقل عفش">
+                <div class="service-icon">🚚</div>
+                <span class="service-name">نقل عفش</span>
+            </div>
+
+            <div class="service" data-service="صيانة أجهزة">
+                <div class="service-icon">🔌</div>
+                <span class="service-name">أجهزة</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNICIANS -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <h2 id="techniciansTitle">
+                الفنيين المتاحين
+            </h2>
+
+            <span id="technicianCount">
+                ...
+            </span>
+
+        </div>
+
+
+        <div id="technicians" class="technicians">
+
+            <div class="loading">
+                جاري تحميل الفنيين...
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <div class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        الرئيسية
+    </div>
+
+    <div class="nav-item" onclick="scrollToServices()">
+        <span class="nav-icon">🛠️</span>
+        الخدمات
+    </div>
+
+    <div class="nav-item" onclick="scrollToTechnicians()">
+        <span class="nav-icon">👷</span>
+        الفنيين
+    </div>
+
+</nav>
+
+</div>
+
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* ================= FIREBASE ================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+
+    authDomain:
+        "khedma-4e607.firebaseapp.com",
+
+    projectId:
+        "khedma-4e607",
+
+    storageBucket:
+        "khedma-4e607.firebasestorage.app",
+
+    messagingSenderId:
+        "541874029326",
+
+    appId:
+        "1:541874029326:web:41c7154c184f70dcce4d5f",
+
+    measurementId:
+        "G-WWB14VL9G3"
+};
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getFirestore(app);
+
+
+/* ================= DATA ================= */
+
+let technicians = [];
+
+let selectedService = "";
+
+
+/* ================= LOAD ================= */
+
+async function loadTechnicians(){
+
+    const container =
+        document.getElementById("technicians");
+
+    try{
+
+        const snapshot =
+            await getDocs(
+                collection(db,"technicians")
+            );
+
+        technicians = [];
+
+        snapshot.forEach(item => {
+
+            const data = item.data();
+
+            /*
+             * العميل يرى الفنيين المتاحين فقط
+             */
+
+            if(data.active === true){
+
+                technicians.push({
+
+                    id:item.id,
+                    ...data
+
+                });
+
+            }
+
+        });
+
+        renderTechnicians(technicians);
+
+    }catch(error){
+
+        console.error(error);
+
+        container.innerHTML = `
+            <div class="empty">
+                تعذر تحميل الفنيين.
+                <br>
+                حاول مرة أخرى.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderTechnicians(list){
+
+    const container =
+        document.getElementById("technicians");
+
+    document.getElementById("technicianCount").textContent =
+        `${list.length} فني`;
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+            <div class="empty">
+                لا يوجد فني متاح حاليًا لهذه الخدمة.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        list.map(tech => createCard(tech)).join("");
+
+}
+
+
+/* ================= CARD ================= */
+
+function createCard(tech){
+
+    const name =
+        escapeHTML(tech.name || "فني");
+
+    const service =
+        escapeHTML(tech.service || "");
+
+    const governorate =
+        escapeHTML(tech.governorate || "");
+
+    const area =
+        escapeHTML(tech.area || "");
+
+    const phone =
+        String(tech.phone || "")
+        .replace(/[^\d+]/g,"");
+
+    const rating =
+        tech.rating ?? 5;
+
+    const initials =
+        getInitials(tech.name);
+
+
+    let price = "السعر حسب الخدمة";
+
+    if(tech.price){
+
+        price =
+            `يبدأ من <strong>${escapeHTML(String(tech.price))} ج.م</strong>`;
+
+    }
+
+
+    const whatsappNumber =
+        phone
+        .replace(/^0/,"20");
+
+
+    const whatsappMessage =
+        encodeURIComponent(
+            `مرحباً ${tech.name || ""}، أريد الاستفسار عن خدمة ${tech.service || ""} من خلال منصة خِدمة.`
+        );
+
+
+    return `
+
+        <article class="tech-card">
+
+            <div class="tech-main">
+
+                <div class="tech-avatar">
+                    ${initials}
+                </div>
+
+                <div class="tech-info">
+
+                    <h3>
+                        ${name}
+                    </h3>
+
+                    <div class="tech-service">
+                        ${service}
+                    </div>
+
+                    <div class="tech-location">
+                        📍 ${governorate} - ${area}
+                    </div>
+
+                </div>
+
+                <div class="rating">
+                    ⭐ ${rating}
+                </div>
+
+            </div>
+
+
+            <div class="tech-details">
+
+                <div class="price">
+                    ${price}
+                </div>
+
+                <div class="actions">
+
+                    <a
+                        class="action call"
+                        href="tel:${phone}">
+
+                        📞 اتصال
+
+                    </a>
+
+                    <a
+                        class="action whatsapp"
+                        href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}"
+                        target="_blank">
+
+                        💬 واتساب
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ================= SEARCH ================= */
+
+document
+.getElementById("searchInput")
+.addEventListener("input", function(){
+
+    const query =
+        this.value
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+        technicians.filter(tech => {
+
+            const text = [
+
+                tech.name,
+                tech.service,
+                tech.governorate,
+                tech.area
+
+            ]
+            .join(" ")
+            .toLowerCase();
+
+
+            return text.includes(query);
+
+        });
+
+
+    selectedService = "";
+
+    document.getElementById("serviceResult").textContent =
+        query
+        ? `نتائج: ${this.value}`
+        : "جميع الخدمات";
+
+
+    renderTechnicians(filtered);
+
+});
+
+
+/* ================= SERVICE FILTER ================= */
+
+document
+.querySelectorAll(".service")
+.forEach(service => {
+
+    service.addEventListener("click", () => {
+
+        selectedService =
+            service.dataset.service;
+
+
+        document
+        .getElementById("searchInput")
+        .value = "";
+
+
+        const filtered =
+            technicians.filter(tech =>
+                tech.service === selectedService
+            );
+
+
+        document.getElementById("serviceResult").textContent =
+            selectedService;
+
+
+        document.getElementById("techniciansTitle").textContent =
+            `فنيين ${selectedService}`;
+
+
+        renderTechnicians(filtered);
+
+
+        scrollToTechnicians();
+
+    });
+
+});
+
+
+/* ================= SCROLL ================= */
+
+window.scrollToServices = function(){
+
+    document
+    .querySelector(".services")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+
+window.scrollToTechnicians = function(){
+
+    document
+    .getElementById("technicians")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+
+/* ================= HELPERS ================= */
+
+function getInitials(name){
+
+    if(!name){
+        return "خ";
+    }
+
+    const parts =
+        name.trim().split(/\s+/);
+
+    if(parts.length >= 2){
+
+        return (
+            parts[0][0] +
+            parts[1][0]
+        );
+
+    }
+
+    return name.substring(0,2);
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* ================= START ================= */
+
+loadTechnicians();
+
+</script>
+
+</body>
+</html>
