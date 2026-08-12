@@ -25,7 +25,7 @@
     --muted:#6b7c74;
     --border:#e5eee9;
     --bg:#f7faf8;
-    --white:#ffffff;
+    --white:#fff;
 
     --shadow:0 10px 30px rgba(6,78,59,.08);
 }
@@ -46,6 +46,10 @@ body{
 button,
 input{
     font-family:inherit;
+}
+
+a{
+    text-decoration:none;
 }
 
 .app{
@@ -85,8 +89,8 @@ input{
     background:linear-gradient(135deg,var(--green-400),var(--green-800));
     color:#fff;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     font-family:'Cairo';
     font-size:20px;
     font-weight:900;
@@ -236,7 +240,6 @@ input{
     align-items:center;
     justify-content:center;
     font-size:25px;
-    color:var(--green-800);
     background:linear-gradient(145deg,#fff,var(--green-50));
     border:1px solid var(--green-100);
     box-shadow:0 5px 15px rgba(6,78,59,.05);
@@ -269,6 +272,12 @@ input{
     border-radius:20px;
     padding:15px;
     box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.15s;
+}
+
+.tech-card:active{
+    transform:scale(.985);
 }
 
 .tech-main{
@@ -294,6 +303,7 @@ input{
 
 .tech-info{
     flex:1;
+    min-width:0;
 }
 
 .tech-info h3{
@@ -331,6 +341,7 @@ input{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:8px;
 }
 
 .price{
@@ -355,6 +366,10 @@ input{
     padding:9px 12px;
     font-size:10px;
     font-weight:900;
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    cursor:pointer;
 }
 
 .call{
@@ -365,6 +380,223 @@ input{
 .whatsapp{
     background:#e9fff4;
     color:#07814f;
+}
+
+/* ================= DETAILS ================= */
+
+.details-view{
+    display:none;
+    animation:pageIn .22s ease;
+}
+
+.details-view.active{
+    display:block;
+}
+
+.home-view.hidden{
+    display:none;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.details-header{
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid var(--border);
+    background:#fff;
+}
+
+.back-btn{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    border:1px solid var(--border);
+    background:var(--green-50);
+    color:var(--green-800);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    cursor:pointer;
+}
+
+.details-header h2{
+    font-family:'Cairo';
+    font-size:17px;
+    font-weight:900;
+}
+
+.details-card{
+    margin:18px;
+    background:#fff;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.details-cover{
+    height:115px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.2),transparent 30%),
+        linear-gradient(135deg,var(--green-900),var(--green-600));
+    position:relative;
+}
+
+.details-avatar{
+    position:absolute;
+    width:82px;
+    height:82px;
+    border-radius:25px;
+    bottom:-40px;
+    right:22px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
+    color:#fff;
+    border:5px solid #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cairo';
+    font-size:25px;
+    font-weight:900;
+    box-shadow:0 8px 20px rgba(6,78,59,.18);
+}
+
+.details-content{
+    padding:50px 20px 22px;
+}
+
+.details-name-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.details-name{
+    font-family:'Cairo';
+    font-size:21px;
+    font-weight:900;
+}
+
+.details-service{
+    color:var(--green-700);
+    font-size:12px;
+    font-weight:800;
+    margin-top:4px;
+}
+
+.details-rating{
+    background:#fffbeb;
+    color:#b45309;
+    border-radius:10px;
+    padding:7px 9px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.details-info{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.info-box{
+    background:var(--green-50);
+    border:1px solid var(--green-100);
+    border-radius:15px;
+    padding:13px;
+}
+
+.info-icon{
+    font-size:18px;
+}
+
+.info-label{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+    margin-top:5px;
+}
+
+.info-value{
+    display:block;
+    color:var(--dark);
+    font-size:11px;
+    font-weight:900;
+    margin-top:2px;
+}
+
+.details-price{
+    margin-top:12px;
+    padding:15px;
+    background:#f9fbfa;
+    border:1px solid var(--border);
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.details-price span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.details-price strong{
+    color:var(--green-700);
+    font-family:'Cairo';
+    font-size:18px;
+}
+
+.details-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
+.details-action{
+    border:0;
+    border-radius:15px;
+    padding:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.details-call{
+    background:linear-gradient(135deg,var(--green-600),var(--green-800));
+    color:#fff;
+}
+
+.details-whatsapp{
+    background:#e9fff4;
+    color:#07814f;
+    border:1px solid #c9f7df;
+}
+
+.details-note{
+    margin-top:14px;
+    text-align:center;
+    color:var(--muted);
+    font-size:9px;
 }
 
 /* ================= EMPTY ================= */
@@ -379,8 +611,6 @@ input{
     color:var(--muted);
     font-size:12px;
 }
-
-/* ================= LOADING ================= */
 
 .loading{
     text-align:center;
@@ -411,6 +641,7 @@ input{
     color:#8b9a93;
     font-size:10px;
     font-weight:800;
+    cursor:pointer;
 }
 
 .nav-item.active{
@@ -422,8 +653,6 @@ input{
     font-size:20px;
     margin-bottom:3px;
 }
-
-/* ================= MOBILE ================= */
 
 @media(min-width:481px){
 
@@ -445,169 +674,200 @@ input{
 
 <div class="screen">
 
-    <!-- HEADER -->
+<!-- ================= HOME ================= -->
 
-    <header class="header">
+<div id="homeView" class="home-view">
 
-        <div class="brand">
+<header class="header">
 
-            <div class="logo">خ</div>
+    <div class="brand">
 
-            <div>
-                <h1>خِدمة</h1>
-                <p>خدماتك بين إيديك</p>
-            </div>
+        <div class="logo">خ</div>
 
+        <div>
+            <h1>خِدمة</h1>
+            <p>خدماتك بين إيديك</p>
         </div>
-
-        <div class="location">
-            📍
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <h2>
-            محتاج فني؟
-            <br>
-            إحنا نوفرهولك 👋
-        </h2>
-
-        <p>
-            اختار الخدمة وابحث عن الفني المناسب ليك
-        </p>
-
-    </section>
-
-
-    <!-- SEARCH -->
-
-    <div class="search-box">
-
-        <span class="search-icon">🔎</span>
-
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="ابحث عن خدمة أو فني أو منطقة..."
-        >
 
     </div>
 
+    <div class="location">📍</div>
 
-    <!-- SERVICES -->
-
-    <section class="section">
-
-        <div class="section-head">
-
-            <h2>الخدمات</h2>
-
-            <span id="serviceResult">
-                جميع الخدمات
-            </span>
-
-        </div>
+</header>
 
 
-        <div class="services">
+<section class="hero">
 
-            <div class="service" data-service="سباكة">
-                <div class="service-icon">🔧</div>
-                <span class="service-name">سباكة</span>
-            </div>
+    <h2>
+        محتاج فني؟
+        <br>
+        إحنا نوفرهولك 👋
+    </h2>
 
-            <div class="service" data-service="كهرباء">
-                <div class="service-icon">⚡</div>
-                <span class="service-name">كهرباء</span>
-            </div>
+    <p>
+        اختار الخدمة وابحث عن الفني المناسب ليك
+    </p>
 
-            <div class="service" data-service="تكييف">
-                <div class="service-icon">❄️</div>
-                <span class="service-name">تكييف</span>
-            </div>
-
-            <div class="service" data-service="نجارة">
-                <div class="service-icon">🪚</div>
-                <span class="service-name">نجارة</span>
-            </div>
-
-            <div class="service" data-service="نقاشة ودهانات">
-                <div class="service-icon">🎨</div>
-                <span class="service-name">دهانات</span>
-            </div>
-
-            <div class="service" data-service="نظافة">
-                <div class="service-icon">🧹</div>
-                <span class="service-name">نظافة</span>
-            </div>
-
-            <div class="service" data-service="نقل عفش">
-                <div class="service-icon">🚚</div>
-                <span class="service-name">نقل عفش</span>
-            </div>
-
-            <div class="service" data-service="صيانة أجهزة">
-                <div class="service-icon">🔌</div>
-                <span class="service-name">أجهزة</span>
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- TECHNICIANS -->
+<div class="search-box">
 
-    <section class="section">
+    <span class="search-icon">🔎</span>
 
-        <div class="section-head">
-
-            <h2 id="techniciansTitle">
-                الفنيين المتاحين
-            </h2>
-
-            <span id="technicianCount">
-                ...
-            </span>
-
-        </div>
-
-
-        <div id="technicians" class="technicians">
-
-            <div class="loading">
-                جاري تحميل الفنيين...
-            </div>
-
-        </div>
-
-    </section>
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="ابحث عن خدمة أو فني أو منطقة..."
+    >
 
 </div>
 
 
-<!-- BOTTOM NAV -->
+<section class="section">
+
+    <div class="section-head">
+
+        <h2>الخدمات</h2>
+
+        <span id="serviceResult">
+            جميع الخدمات
+        </span>
+
+    </div>
+
+
+    <div class="services">
+
+        <div class="service" data-service="سباكة">
+            <div class="service-icon">🔧</div>
+            <span class="service-name">سباكة</span>
+        </div>
+
+        <div class="service" data-service="كهرباء">
+            <div class="service-icon">⚡</div>
+            <span class="service-name">كهرباء</span>
+        </div>
+
+        <div class="service" data-service="تكييف">
+            <div class="service-icon">❄️</div>
+            <span class="service-name">تكييف</span>
+        </div>
+
+        <div class="service" data-service="نجارة">
+            <div class="service-icon">🪚</div>
+            <span class="service-name">نجارة</span>
+        </div>
+
+        <div class="service" data-service="نقاشة ودهانات">
+            <div class="service-icon">🎨</div>
+            <span class="service-name">دهانات</span>
+        </div>
+
+        <div class="service" data-service="نظافة">
+            <div class="service-icon">🧹</div>
+            <span class="service-name">نظافة</span>
+        </div>
+
+        <div class="service" data-service="نقل عفش">
+            <div class="service-icon">🚚</div>
+            <span class="service-name">نقل عفش</span>
+        </div>
+
+        <div class="service" data-service="صيانة أجهزة">
+            <div class="service-icon">🔌</div>
+            <span class="service-name">أجهزة</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-head">
+
+        <h2 id="techniciansTitle">
+            الفنيين المتاحين
+        </h2>
+
+        <span id="technicianCount">...</span>
+
+    </div>
+
+
+    <div id="technicians" class="technicians">
+
+        <div class="loading">
+            جاري تحميل الفنيين...
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- ================= DETAILS ================= -->
+
+<div id="detailsView" class="details-view">
+
+    <div class="details-header">
+
+        <button
+            class="back-btn"
+            onclick="closeDetails()">
+
+            ←
+
+        </button>
+
+        <h2>تفاصيل الفني</h2>
+
+    </div>
+
+
+    <div id="detailsContent"></div>
+
+</div>
+
+</div>
+
+
+<!-- ================= NAV ================= -->
 
 <nav class="bottom-nav">
 
-    <div class="nav-item active">
+    <div
+        class="nav-item active"
+        id="homeNav"
+        onclick="goHome()">
+
         <span class="nav-icon">🏠</span>
         الرئيسية
+
     </div>
 
-    <div class="nav-item" onclick="scrollToServices()">
+
+    <div
+        class="nav-item"
+        onclick="scrollToServices()">
+
         <span class="nav-icon">🛠️</span>
         الخدمات
+
     </div>
 
-    <div class="nav-item" onclick="scrollToTechnicians()">
+
+    <div
+        class="nav-item"
+        onclick="scrollToTechnicians()">
+
         <span class="nav-icon">👷</span>
         الفنيين
+
     </div>
 
 </nav>
@@ -633,7 +893,7 @@ import {
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+        "AIzaSyD4DDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
 
     authDomain:
         "khedma-4e607.firebaseapp.com",
@@ -654,18 +914,32 @@ const firebaseConfig = {
         "G-WWB14VL9G3"
 };
 
-const app =
-    initializeApp(firebaseConfig);
-
-const db =
-    getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 /* ================= DATA ================= */
 
 let technicians = [];
 
-let selectedService = "";
+
+/* ================= SERVICE ICON ================= */
+
+function getServiceIcon(service){
+
+    const s = String(service || "").toLowerCase();
+
+    if(s.includes("سباك")) return "🔧";
+    if(s.includes("كهرب")) return "⚡";
+    if(s.includes("تكييف") || s.includes("تبريد")) return "❄️";
+    if(s.includes("نجار")) return "🪚";
+    if(s.includes("دهان") || s.includes("نقاش")) return "🎨";
+    if(s.includes("نظاف")) return "🧹";
+    if(s.includes("نقل")) return "🚚";
+    if(s.includes("جهاز") || s.includes("صيان")) return "🔌";
+
+    return "🛠️";
+}
 
 
 /* ================= LOAD ================= */
@@ -688,17 +962,11 @@ async function loadTechnicians(){
 
             const data = item.data();
 
-            /*
-             * العميل يرى الفنيين المتاحين فقط
-             */
-
             if(data.active === true){
 
                 technicians.push({
-
                     id:item.id,
                     ...data
-
                 });
 
             }
@@ -718,9 +986,7 @@ async function loadTechnicians(){
                 حاول مرة أخرى.
             </div>
         `;
-
     }
-
 }
 
 
@@ -744,13 +1010,11 @@ function renderTechnicians(list){
         `;
 
         return;
-
     }
 
 
     container.innerHTML =
         list.map(tech => createCard(tech)).join("");
-
 }
 
 
@@ -762,13 +1026,13 @@ function createCard(tech){
         escapeHTML(tech.name || "فني");
 
     const service =
-        escapeHTML(tech.service || "");
+        escapeHTML(tech.service || "خدمات");
 
     const governorate =
-        escapeHTML(tech.governorate || "");
+        escapeHTML(tech.governorate || "غير محدد");
 
     const area =
-        escapeHTML(tech.area || "");
+        escapeHTML(tech.area || "غير محدد");
 
     const phone =
         String(tech.phone || "")
@@ -780,8 +1044,12 @@ function createCard(tech){
     const initials =
         getInitials(tech.name);
 
+    const icon =
+        getServiceIcon(tech.service);
 
-    let price = "السعر حسب الخدمة";
+
+    let price =
+        "السعر حسب الخدمة";
 
     if(tech.price){
 
@@ -791,32 +1059,21 @@ function createCard(tech){
     }
 
 
-    const whatsappNumber =
-        phone
-        .replace(/^0/,"20");
-
-
-    const whatsappMessage =
-        encodeURIComponent(
-            `مرحباً ${tech.name || ""}، أريد الاستفسار عن خدمة ${tech.service || ""} من خلال منصة خِدمة.`
-        );
-
-
     return `
 
-        <article class="tech-card">
+        <article
+            class="tech-card"
+            onclick="openDetails('${tech.id}')">
 
             <div class="tech-main">
 
                 <div class="tech-avatar">
-                    ${initials}
+                    ${icon}
                 </div>
 
                 <div class="tech-info">
 
-                    <h3>
-                        ${name}
-                    </h3>
+                    <h3>${name}</h3>
 
                     <div class="tech-service">
                         ${service}
@@ -829,7 +1086,7 @@ function createCard(tech){
                 </div>
 
                 <div class="rating">
-                    ⭐ ${rating}
+                    ⭐ ${escapeHTML(String(rating))}
                 </div>
 
             </div>
@@ -845,7 +1102,8 @@ function createCard(tech){
 
                     <a
                         class="action call"
-                        href="tel:${phone}">
+                        href="tel:${phone}"
+                        onclick="event.stopPropagation()">
 
                         📞 اتصال
 
@@ -853,8 +1111,9 @@ function createCard(tech){
 
                     <a
                         class="action whatsapp"
-                        href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}"
-                        target="_blank">
+                        href="${getWhatsAppLink(tech)}"
+                        target="_blank"
+                        onclick="event.stopPropagation()">
 
                         💬 واتساب
 
@@ -867,7 +1126,273 @@ function createCard(tech){
         </article>
 
     `;
+}
 
+
+/* ================= DETAILS ================= */
+
+window.openDetails = function(id){
+
+    const tech =
+        technicians.find(item => item.id === id);
+
+    if(!tech) return;
+
+    const name =
+        escapeHTML(tech.name || "فني");
+
+    const service =
+        escapeHTML(tech.service || "خدمات");
+
+    const governorate =
+        escapeHTML(tech.governorate || "غير محدد");
+
+    const area =
+        escapeHTML(tech.area || "غير محدد");
+
+    const rating =
+        tech.rating ?? 5;
+
+    const phone =
+        String(tech.phone || "")
+        .replace(/[^\d+]/g,"");
+
+    const icon =
+        getServiceIcon(tech.service);
+
+    const initials =
+        getInitials(tech.name);
+
+
+    let priceText =
+        "السعر حسب الخدمة";
+
+    if(tech.price){
+
+        priceText =
+            escapeHTML(String(tech.price)) + " ج.م";
+
+    }
+
+
+    document.getElementById("detailsContent").innerHTML = `
+
+        <div class="details-card">
+
+            <div class="details-cover">
+
+                <div class="details-avatar">
+                    ${icon}
+                </div>
+
+            </div>
+
+
+            <div class="details-content">
+
+                <div class="details-name-row">
+
+                    <div>
+
+                        <div class="details-name">
+                            ${name}
+                        </div>
+
+                        <div class="details-service">
+                            ${icon} ${service}
+                        </div>
+
+                    </div>
+
+                    <div class="details-rating">
+                        ⭐ ${escapeHTML(String(rating))}
+                    </div>
+
+                </div>
+
+
+                <div class="details-info">
+
+                    <div class="info-box">
+
+                        <span class="info-icon">📍</span>
+
+                        <span class="info-label">
+                            المحافظة
+                        </span>
+
+                        <span class="info-value">
+                            ${governorate}
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-icon">📌</span>
+
+                        <span class="info-label">
+                            المنطقة
+                        </span>
+
+                        <span class="info-value">
+                            ${area}
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-icon">
+                            ${icon}
+                        </span>
+
+                        <span class="info-label">
+                            التخصص
+                        </span>
+
+                        <span class="info-value">
+                            ${service}
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span class="info-icon">⭐</span>
+
+                        <span class="info-label">
+                            التقييم
+                        </span>
+
+                        <span class="info-value">
+                            ${escapeHTML(String(rating))} / 5
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="details-price">
+
+                    <span>
+                        السعر التقريبي
+                    </span>
+
+                    <strong>
+                        ${priceText}
+                    </strong>
+
+                </div>
+
+
+                <div class="details-actions">
+
+                    <a
+                        class="details-action details-call"
+                        href="tel:${phone}">
+
+                        📞 اتصال بالفني
+
+                    </a>
+
+
+                    <a
+                        class="details-action details-whatsapp"
+                        href="${getWhatsAppLink(tech)}"
+                        target="_blank">
+
+                        💬 واتساب
+
+                    </a>
+
+                </div>
+
+
+                <div class="details-note">
+
+                    يتم التواصل مع الفني مباشرة عبر بيانات الاتصال المتاحة.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById("homeView")
+        .classList.add("hidden");
+
+    document.getElementById("detailsView")
+        .classList.add("active");
+
+    document.querySelector(".bottom-nav")
+        .style.display = "none";
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+};
+
+
+/* ================= CLOSE DETAILS ================= */
+
+window.closeDetails = function(){
+
+    document.getElementById("detailsView")
+        .classList.remove("active");
+
+    document.getElementById("homeView")
+        .classList.remove("hidden");
+
+    document.querySelector(".bottom-nav")
+        .style.display = "flex";
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+};
+
+
+/* ================= HOME ================= */
+
+window.goHome = function(){
+
+    closeDetails();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+};
+
+
+/* ================= WHATSAPP ================= */
+
+function getWhatsAppLink(tech){
+
+    let phone =
+        String(tech.phone || "")
+        .replace(/[^\d]/g,"");
+
+    if(phone.startsWith("0")){
+        phone = "20" + phone.substring(1);
+    }
+
+    const message =
+        encodeURIComponent(
+            `مرحباً ${tech.name || ""}، أريد الاستفسار عن خدمة ${tech.service || ""} من خلال منصة خِدمة.`
+        );
+
+    return `https://wa.me/${phone}?text=${message}`;
 }
 
 
@@ -875,44 +1400,36 @@ function createCard(tech){
 
 document
 .getElementById("searchInput")
-.addEventListener("input", function(){
+.addEventListener("input",function(){
 
     const query =
-        this.value
-        .trim()
-        .toLowerCase();
-
+        this.value.trim().toLowerCase();
 
     const filtered =
         technicians.filter(tech => {
 
             const text = [
-
                 tech.name,
                 tech.service,
                 tech.governorate,
                 tech.area
-
             ]
             .join(" ")
             .toLowerCase();
 
-
             return text.includes(query);
-
         });
 
-
-    selectedService = "";
 
     document.getElementById("serviceResult").textContent =
         query
         ? `نتائج: ${this.value}`
         : "جميع الخدمات";
 
+    document.getElementById("techniciansTitle").textContent =
+        "الفنيين المتاحين";
 
     renderTechnicians(filtered);
-
 });
 
 
@@ -922,38 +1439,34 @@ document
 .querySelectorAll(".service")
 .forEach(service => {
 
-    service.addEventListener("click", () => {
+    service.addEventListener("click",function(){
 
-        selectedService =
-            service.dataset.service;
+        const selectedService =
+            this.dataset.service;
 
-
-        document
-        .getElementById("searchInput")
-        .value = "";
-
+        document.getElementById("searchInput")
+            .value = "";
 
         const filtered =
             technicians.filter(tech =>
-                tech.service === selectedService
+                String(tech.service || "")
+                .trim()
+                .toLowerCase()
+                ===
+                selectedService.trim().toLowerCase()
             );
 
 
-        document.getElementById("serviceResult").textContent =
-            selectedService;
+        document.getElementById("serviceResult")
+            .textContent = selectedService;
 
-
-        document.getElementById("techniciansTitle").textContent =
-            `فنيين ${selectedService}`;
-
+        document.getElementById("techniciansTitle")
+            .textContent = `فنيين ${selectedService}`;
 
         renderTechnicians(filtered);
 
-
         scrollToTechnicians();
-
     });
-
 });
 
 
@@ -962,22 +1475,20 @@ document
 window.scrollToServices = function(){
 
     document
-    .querySelector(".services")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
+        .querySelector(".services")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 };
 
 
 window.scrollToTechnicians = function(){
 
     document
-    .getElementById("technicians")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
+        .getElementById("technicians")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 };
 
 
@@ -985,9 +1496,7 @@ window.scrollToTechnicians = function(){
 
 function getInitials(name){
 
-    if(!name){
-        return "خ";
-    }
+    if(!name) return "خ";
 
     const parts =
         name.trim().split(/\s+/);
@@ -998,11 +1507,9 @@ function getInitials(name){
             parts[0][0] +
             parts[1][0]
         );
-
     }
 
     return name.substring(0,2);
-
 }
 
 
@@ -1014,7 +1521,6 @@ function escapeHTML(value){
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
-
 }
 
 
