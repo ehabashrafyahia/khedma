@@ -2,9 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>خِدمة | منشأة الدهب القبلية</title>
+<title>خِدمة | خدماتك بين إيديك</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,25 +12,20 @@
 
 <style>
 :root{
-    --g950:#022c22;
-    --g900:#064e3b;
-    --g800:#065f46;
-    --g700:#047857;
-    --g600:#059669;
-    --g500:#10b981;
-    --g400:#34d399;
-    --g300:#6ee7b7;
-    --g200:#a7f3d0;
-    --g100:#d1fae5;
-    --g50:#ecfdf5;
-
+    --green-900:#064e3b;
+    --green-800:#065f46;
+    --green-700:#047857;
+    --green-600:#059669;
+    --green-500:#10b981;
+    --green-400:#34d399;
+    --green-100:#d1fae5;
+    --green-50:#ecfdf5;
     --dark:#10231c;
-    --muted:#70827a;
-    --border:#e4eee9;
+    --muted:#6b7c74;
+    --border:#e5eee9;
     --bg:#f7faf8;
     --white:#fff;
-
-    --shadow:0 8px 25px rgba(6,78,59,.07);
+    --shadow:0 10px 30px rgba(6,78,59,.08);
 }
 
 *{
@@ -40,12 +35,8 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    background:#031b14;
+    background:#071c15;
     font-family:'Tajawal',sans-serif;
     color:var(--dark);
 }
@@ -54,8 +45,8 @@ button,input{
     font-family:inherit;
 }
 
-button,a{
-    -webkit-tap-highlight-color:transparent;
+a{
+    text-decoration:none;
 }
 
 .app{
@@ -70,16 +61,16 @@ button,a{
 
 .screen{
     min-height:100vh;
-    padding-bottom:88px;
+    padding-bottom:90px;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 .header{
-    padding:18px 18px 12px;
+    padding:20px 18px 10px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .brand{
@@ -89,171 +80,128 @@ button,a{
 }
 
 .logo{
-    width:47px;
-    height:47px;
-    border-radius:16px;
-    background:linear-gradient(145deg,var(--g400),var(--g800));
+    width:45px;
+    height:45px;
+    border-radius:15px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
+    color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#fff;
     font-family:'Cairo';
-    font-size:22px;
+    font-size:20px;
     font-weight:900;
-    box-shadow:0 8px 20px rgba(5,150,105,.22);
+    box-shadow:0 8px 18px rgba(5,150,105,.2);
 }
 
 .brand h1{
     font-family:'Cairo';
-    font-size:20px;
+    font-size:19px;
     font-weight:900;
-    line-height:1.1;
 }
 
 .brand p{
-    margin-top:3px;
-    color:var(--muted);
     font-size:10px;
-    font-weight:700;
+    color:var(--muted);
 }
 
 .location{
-    width:42px;
-    height:42px;
-    border-radius:14px;
+    width:40px;
+    height:40px;
+    border-radius:13px;
     background:#fff;
     border:1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--g700);
+    font-size:18px;
 }
 
-.location svg{
-    width:20px;
-    height:20px;
-}
-
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
-    margin:8px 18px 20px;
+    margin:10px 18px 20px;
     padding:23px 20px;
-    min-height:166px;
-    border-radius:25px;
-    color:white;
+    border-radius:24px;
+    background:
+        radial-gradient(circle at left top,rgba(52,211,153,.3),transparent 35%),
+        linear-gradient(135deg,var(--green-900),var(--green-700));
+    color:#fff;
     position:relative;
     overflow:hidden;
-
-    background:
-        radial-gradient(circle at 90% 15%,rgba(110,231,183,.22),transparent 28%),
-        radial-gradient(circle at 5% 100%,rgba(52,211,153,.20),transparent 30%),
-        linear-gradient(135deg,var(--g950),var(--g700));
-    
-    box-shadow:0 18px 35px rgba(6,78,59,.20);
+    box-shadow:0 15px 30px rgba(6,78,59,.2);
 }
 
-.hero-content{
-    position:relative;
-    z-index:2;
-}
-
-.hero-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:6px 10px;
-    border-radius:20px;
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.12);
-    color:#d1fae5;
-    font-size:10px;
-    font-weight:800;
-    margin-bottom:10px;
+.hero:after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border:25px solid rgba(255,255,255,.06);
+    border-radius:50%;
+    left:-45px;
+    bottom:-60px;
 }
 
 .hero h2{
     font-family:'Cairo';
-    font-size:23px;
-    font-weight:900;
+    font-size:22px;
     line-height:1.35;
+    position:relative;
+    z-index:1;
 }
 
 .hero p{
+    color:#c9f7e5;
+    font-size:12px;
     margin-top:6px;
-    color:#c8f7e5;
-    font-size:11px;
-    line-height:1.7;
-    max-width:290px;
+    position:relative;
+    z-index:1;
 }
 
-.hero-decoration{
-    position:absolute;
-    left:-30px;
-    bottom:-65px;
-    width:165px;
-    height:165px;
-    border:28px solid rgba(255,255,255,.055);
-    border-radius:50%;
-}
-
-.hero-decoration:after{
-    content:"";
-    position:absolute;
-    width:65px;
-    height:65px;
-    border:13px solid rgba(255,255,255,.04);
-    border-radius:50%;
-    right:-90px;
-    top:-55px;
-}
-
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search-box{
-    margin:0 18px 25px;
-    height:54px;
-    padding:0 15px;
+    margin:0 18px 24px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    height:52px;
     display:flex;
     align-items:center;
     gap:10px;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:17px;
+    padding:0 15px;
     box-shadow:var(--shadow);
 }
 
-.search-box svg{
-    width:20px;
-    height:20px;
-    color:var(--g700);
-    flex-shrink:0;
+.search-icon{
+    font-size:17px;
 }
 
 .search-box input{
-    width:100%;
+    flex:1;
     border:0;
     outline:0;
-    background:transparent;
-    color:var(--dark);
     font-size:13px;
+    color:var(--dark);
+    background:transparent;
 }
 
 .search-box input::placeholder{
     color:#9aa9a2;
 }
 
-/* ================= SECTION ================= */
+/* SECTION */
 
 .section{
-    margin-bottom:27px;
+    margin-bottom:25px;
 }
 
 .section-head{
     padding:0 18px 13px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .section-head h2{
@@ -263,17 +211,17 @@ button,a{
 }
 
 .section-head span{
-    color:var(--g700);
     font-size:10px;
+    color:var(--green-700);
     font-weight:800;
 }
 
-/* ================= SERVICES ================= */
+/* SERVICES */
 
 .services{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
+    gap:11px;
     padding:0 18px;
 }
 
@@ -284,25 +232,19 @@ button,a{
 
 .service-icon{
     aspect-ratio:1;
-    border-radius:18px;
+    border-radius:17px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(145deg,#fff,var(--g50));
-    border:1px solid var(--g100);
-    color:var(--g700);
-    box-shadow:0 6px 15px rgba(6,78,59,.055);
+    font-size:25px;
+    background:linear-gradient(145deg,#fff,var(--green-50));
+    border:1px solid var(--green-100);
+    box-shadow:0 5px 15px rgba(6,78,59,.05);
     transition:.15s;
 }
 
-.service-icon svg{
-    width:25px;
-    height:25px;
-    stroke:currentColor;
-    fill:none;
-    stroke-width:1.9;
-    stroke-linecap:round;
-    stroke-linejoin:round;
+.service:active .service-icon{
+    transform:scale(.94);
 }
 
 .service-name{
@@ -312,18 +254,7 @@ button,a{
     font-weight:800;
 }
 
-.service.active .service-icon{
-    background:linear-gradient(145deg,var(--g500),var(--g800));
-    color:#fff;
-    border-color:transparent;
-    box-shadow:0 8px 18px rgba(5,150,105,.20);
-}
-
-.service:active .service-icon{
-    transform:scale(.94);
-}
-
-/* ================= TECHNICIANS ================= */
+/* TECHNICIANS */
 
 .technicians{
     padding:0 18px;
@@ -335,9 +266,15 @@ button,a{
 .tech-card{
     background:#fff;
     border:1px solid var(--border);
-    border-radius:21px;
+    border-radius:20px;
     padding:15px;
     box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.15s;
+}
+
+.tech-card:active{
+    transform:scale(.985);
 }
 
 .tech-main{
@@ -347,19 +284,18 @@ button,a{
 }
 
 .tech-avatar{
-    width:55px;
-    height:55px;
-    border-radius:17px;
+    width:54px;
+    height:54px;
     flex-shrink:0;
-    background:linear-gradient(145deg,var(--g400),var(--g800));
+    border-radius:17px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
     font-family:'Cairo';
-    font-size:17px;
+    font-size:25px;
     font-weight:900;
-    box-shadow:0 6px 13px rgba(5,150,105,.16);
 }
 
 .tech-info{
@@ -371,35 +307,28 @@ button,a{
     font-family:'Cairo';
     font-size:14px;
     font-weight:900;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
 }
 
 .tech-service{
-    color:var(--g700);
+    color:var(--green-700);
     font-size:11px;
     font-weight:800;
     margin-top:2px;
 }
 
 .tech-location{
-    display:flex;
-    align-items:center;
-    gap:3px;
     color:var(--muted);
     font-size:10px;
-    margin-top:4px;
+    margin-top:3px;
 }
 
 .rating{
     background:#fffbeb;
-    color:#a16207;
+    color:#b45309;
     padding:5px 7px;
     border-radius:8px;
     font-size:10px;
     font-weight:800;
-    white-space:nowrap;
 }
 
 .tech-details{
@@ -407,18 +336,18 @@ button,a{
     padding-top:12px;
     border-top:1px solid #f0f4f2;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:8px;
 }
 
 .price{
+    font-size:11px;
     color:var(--muted);
-    font-size:10px;
 }
 
 .price strong{
-    color:var(--g700);
+    color:var(--green-700);
     font-family:'Cairo';
     font-size:14px;
 }
@@ -429,27 +358,19 @@ button,a{
 }
 
 .action{
-    text-decoration:none;
     border:0;
     border-radius:11px;
     padding:9px 12px;
     font-size:10px;
     font-weight:900;
-    display:flex;
+    display:inline-flex;
     align-items:center;
-    gap:5px;
-}
-
-.action svg{
-    width:14px;
-    height:14px;
-    stroke:currentColor;
-    fill:none;
-    stroke-width:2;
+    gap:4px;
+    cursor:pointer;
 }
 
 .call{
-    background:var(--g700);
+    background:var(--green-700);
     color:#fff;
 }
 
@@ -458,60 +379,251 @@ button,a{
     color:#07814f;
 }
 
-/* ================= EMPTY ================= */
+/* DETAILS */
 
-.empty{
-    margin:0 18px;
-    padding:31px 20px;
-    text-align:center;
-    background:#fff;
-    border:1px dashed var(--border);
-    border-radius:19px;
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.8;
+.details-view{
+    display:none;
+    animation:pageIn .22s ease;
 }
 
-.empty-icon{
-    width:48px;
-    height:48px;
-    margin:0 auto 9px;
-    border-radius:15px;
-    background:var(--g50);
-    color:var(--g700);
+.details-view.active{
+    display:block;
+}
+
+.home-view.hidden{
+    display:none;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.details-header{
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid var(--border);
+    background:#fff;
+}
+
+.back-btn{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    border:1px solid var(--border);
+    background:var(--green-50);
+    color:var(--green-800);
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:21px;
+    cursor:pointer;
 }
 
-.empty-icon svg{
-    width:23px;
-    height:23px;
+.details-header h2{
+    font-family:'Cairo';
+    font-size:17px;
+    font-weight:900;
 }
 
-/* ================= LOADING ================= */
+.details-card{
+    margin:18px;
+    background:#fff;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
 
-.loading{
-    padding:30px;
+.details-cover{
+    height:115px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.2),transparent 30%),
+        linear-gradient(135deg,var(--green-900),var(--green-600));
+    position:relative;
+}
+
+.details-avatar{
+    position:absolute;
+    width:82px;
+    height:82px;
+    border-radius:25px;
+    bottom:-40px;
+    right:22px;
+    background:linear-gradient(135deg,var(--green-400),var(--green-800));
+    color:#fff;
+    border:5px solid #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:34px;
+    box-shadow:0 8px 20px rgba(6,78,59,.18);
+}
+
+.details-content{
+    padding:50px 20px 22px;
+}
+
+.details-name-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.details-name{
+    font-family:'Cairo';
+    font-size:21px;
+    font-weight:900;
+}
+
+.details-service{
+    color:var(--green-700);
+    font-size:12px;
+    font-weight:800;
+    margin-top:4px;
+}
+
+.details-rating{
+    background:#fffbeb;
+    color:#b45309;
+    border-radius:10px;
+    padding:7px 9px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.details-info{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.info-box{
+    background:var(--green-50);
+    border:1px solid var(--green-100);
+    border-radius:15px;
+    padding:13px;
+}
+
+.info-icon{
+    font-size:18px;
+}
+
+.info-label{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+    margin-top:5px;
+}
+
+.info-value{
+    display:block;
+    color:var(--dark);
+    font-size:11px;
+    font-weight:900;
+    margin-top:2px;
+}
+
+.details-price{
+    margin-top:12px;
+    padding:15px;
+    background:#f9fbfa;
+    border:1px solid var(--border);
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.details-price span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.details-price strong{
+    color:var(--green-700);
+    font-family:'Cairo';
+    font-size:18px;
+}
+
+.details-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
+.details-action{
+    border:0;
+    border-radius:15px;
+    padding:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.details-call{
+    background:linear-gradient(135deg,var(--green-600),var(--green-800));
+    color:#fff;
+}
+
+.details-whatsapp{
+    background:#e9fff4;
+    color:#07814f;
+    border:1px solid #c9f7df;
+}
+
+.details-note{
+    margin-top:14px;
+    text-align:center;
+    color:var(--muted);
+    font-size:9px;
+}
+
+/* EMPTY / LOADING */
+
+.empty{
+    margin:0 18px;
+    background:#fff;
+    border:1px dashed var(--border);
+    border-radius:18px;
+    padding:30px 20px;
     text-align:center;
     color:var(--muted);
     font-size:12px;
 }
 
-/* ================= BOTTOM NAV ================= */
+.loading{
+    text-align:center;
+    padding:30px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* NAV */
 
 .bottom-nav{
     position:fixed;
     bottom:0;
-    left:50%;
-    transform:translateX(-50%);
     width:100%;
     max-width:480px;
     height:70px;
-    padding-bottom:env(safe-area-inset-bottom);
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(12px);
     border-top:1px solid var(--border);
     display:flex;
     justify-content:space-around;
@@ -520,7 +632,6 @@ button,a{
 }
 
 .nav-item{
-    min-width:70px;
     text-align:center;
     color:#8b9a93;
     font-size:10px;
@@ -529,32 +640,23 @@ button,a{
 }
 
 .nav-item.active{
-    color:var(--g700);
+    color:var(--green-700);
 }
 
 .nav-icon{
-    width:21px;
-    height:21px;
-    margin:0 auto 4px;
     display:block;
+    font-size:20px;
+    margin-bottom:3px;
 }
-
-.nav-icon svg{
-    width:21px;
-    height:21px;
-    stroke:currentColor;
-    fill:none;
-    stroke-width:1.9;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-/* ================= DESKTOP ================= */
 
 @media(min-width:481px){
-
     .app{
-        box-shadow:0 0 70px rgba(0,0,0,.30);
+        box-shadow:0 0 60px rgba(0,0,0,.3);
+    }
+
+    .bottom-nav{
+        left:50%;
+        transform:translateX(-50%);
     }
 }
 </style>
@@ -564,9 +666,11 @@ button,a{
 
 <div class="app">
 
-<div class="screen" id="screen">
+<div class="screen">
 
-<!-- HEADER -->
+<!-- HOME -->
+
+<div id="homeView" class="home-view">
 
 <header class="header">
 
@@ -576,73 +680,45 @@ button,a{
 
         <div>
             <h1>خِدمة</h1>
-            <p>منشأة الدهب القبلية</p>
+            <p>خدماتك بين إيديك</p>
         </div>
 
     </div>
 
-    <div class="location" title="موقع الخدمة">
-
-        <svg viewBox="0 0 24 24">
-            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
-            <circle cx="12" cy="10" r="2.5"/>
-        </svg>
-
-    </div>
+    <div class="location">📍</div>
 
 </header>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
-    <div class="hero-content">
+    <h2>
+        محتاج فني؟
+        <br>
+        إحنا نوفرهولك 👋
+    </h2>
 
-        <div class="hero-badge">
-            <span>●</span>
-            خدمات أهل القرية
-        </div>
-
-        <h2>
-            كل خدمات قريتك<br>
-            في مكان واحد
-        </h2>
-
-        <p>
-            ابحث عن الفني المناسب وتواصل معه مباشرة
-            بكل سهولة.
-        </p>
-
-    </div>
-
-    <div class="hero-decoration"></div>
+    <p>
+        خدمات أهل القرية بين إيديك
+    </p>
 
 </section>
 
 
-<!-- SEARCH -->
-
 <div class="search-box">
 
-    <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="m20 20-4-4"/>
-    </svg>
+    <span class="search-icon">🔎</span>
 
     <input
         id="searchInput"
         type="text"
-        placeholder="ابحث عن فني أو خدمة..."
-        autocomplete="off"
+        placeholder="ابحث عن خدمة أو فني..."
     >
 
 </div>
 
 
-<!-- SERVICES -->
-
-<section class="section" id="servicesSection">
+<section class="section">
 
     <div class="section-head">
 
@@ -657,171 +733,44 @@ button,a{
 
     <div class="services">
 
-        <!-- سباكة -->
-
         <div class="service" data-service="سباكة">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0L21 6"/>
-                    <path d="m15 3-3 3 6 6 3-3"/>
-                    <path d="m9 15-6 6"/>
-                    <path d="M6 12 3 15"/>
-                    <path d="m12 18-3-3"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🔧</div>
             <span class="service-name">سباكة</span>
-
         </div>
-
-
-        <!-- كهرباء -->
 
         <div class="service" data-service="كهرباء">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="m13 2-9 12h7l-1 8 9-12h-7z"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">⚡</div>
             <span class="service-name">كهرباء</span>
-
         </div>
-
-
-        <!-- تكييف -->
 
         <div class="service" data-service="تكييف">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="5" width="18" height="12" rx="2"/>
-                    <path d="M7 21v-4"/>
-                    <path d="M12 21v-4"/>
-                    <path d="M17 21v-4"/>
-                    <path d="M7 10h10"/>
-                    <path d="M9 13h.01"/>
-                    <path d="M12 13h.01"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">❄️</div>
             <span class="service-name">تكييف</span>
-
         </div>
-
-
-        <!-- نجارة -->
 
         <div class="service" data-service="نجارة">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="m3 21 14-14"/>
-                    <path d="m14 4 6 6"/>
-                    <path d="m17 3 4 4"/>
-                    <path d="M7 17 3 21"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🪚</div>
             <span class="service-name">نجارة</span>
-
         </div>
-
-
-        <!-- دهانات -->
 
         <div class="service" data-service="نقاشة ودهانات">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M4 7h10a3 3 0 0 0 0-6H8"/>
-                    <path d="M8 1v6"/>
-                    <path d="M10 7v13"/>
-                    <path d="M7 20h6"/>
-                    <path d="M17 12h.01"/>
-                    <path d="M20 9h.01"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🎨</div>
             <span class="service-name">دهانات</span>
-
         </div>
-
-
-        <!-- نظافة -->
 
         <div class="service" data-service="نظافة">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="m9 3 3 3"/>
-                    <path d="M8 6h7"/>
-                    <path d="m10 6-4 15"/>
-                    <path d="M15 6 21 21"/>
-                    <path d="M5 21h16"/>
-                    <path d="M4 10h14"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🧹</div>
             <span class="service-name">نظافة</span>
-
         </div>
-
-
-        <!-- نقل عفش -->
 
         <div class="service" data-service="نقل عفش">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <rect x="2" y="6" width="13" height="10" rx="1"/>
-                    <path d="M15 10h4l3 3v3h-7"/>
-                    <circle cx="6" cy="18" r="2"/>
-                    <circle cx="18" cy="18" r="2"/>
-                    <path d="M15 16H8"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🚚</div>
             <span class="service-name">نقل عفش</span>
-
         </div>
 
-
-        <!-- أجهزة -->
-
         <div class="service" data-service="صيانة أجهزة">
-
-            <div class="service-icon">
-
-                <svg viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="18" height="18" rx="3"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="M12 8v-2"/>
-                    <path d="M12 18v-2"/>
-                    <path d="m8 12-2 0"/>
-                    <path d="m18 12-2 0"/>
-                </svg>
-
-            </div>
-
+            <div class="service-icon">🔌</div>
             <span class="service-name">أجهزة</span>
-
         </div>
 
     </div>
@@ -829,9 +778,7 @@ button,a{
 </section>
 
 
-<!-- TECHNICIANS -->
-
-<section class="section" id="techniciansSection">
+<section class="section">
 
     <div class="section-head">
 
@@ -839,9 +786,7 @@ button,a{
             الفنيين المتاحين
         </h2>
 
-        <span id="technicianCount">
-            ...
-        </span>
+        <span id="technicianCount">...</span>
 
     </div>
 
@@ -859,58 +804,60 @@ button,a{
 </div>
 
 
-<!-- BOTTOM NAV -->
+<!-- DETAILS -->
+
+<div id="detailsView" class="details-view">
+
+    <div class="details-header">
+
+        <button
+            class="back-btn"
+            onclick="closeDetails()">
+
+            ←
+
+        </button>
+
+        <h2>تفاصيل الفني</h2>
+
+    </div>
+
+    <div id="detailsContent"></div>
+
+</div>
+
+</div>
+
+
+<!-- NAV -->
 
 <nav class="bottom-nav">
 
-    <div class="nav-item active" onclick="goHome(this)">
+    <div
+        class="nav-item active"
+        onclick="goHome()">
 
-        <span class="nav-icon">
-
-            <svg viewBox="0 0 24 24">
-                <path d="m3 10 9-7 9 7"/>
-                <path d="M5 9v11h14V9"/>
-                <path d="M9 20v-6h6v6"/>
-            </svg>
-
-        </span>
-
+        <span class="nav-icon">🏠</span>
         الرئيسية
 
     </div>
 
 
-    <div class="nav-item" onclick="scrollToServices(this)">
+    <div
+        class="nav-item"
+        onclick="scrollToServices()">
 
-        <span class="nav-icon">
-
-            <svg viewBox="0 0 24 24">
-                <path d="m14.7 6.3 3 3"/>
-                <path d="m3 21 6.3-6.3"/>
-                <path d="m12 8 4 4"/>
-                <path d="M14 3a4 4 0 0 0-5 5l-6 6a2 2 0 0 0 3 3l6-6a4 4 0 0 0 5-5"/>
-            </svg>
-
-        </span>
-
+        <span class="nav-icon">🛠️</span>
         الخدمات
 
     </div>
 
 
-    <div class="nav-item" onclick="scrollToTechnicians(this)">
+    <div
+        class="nav-item"
+        onclick="scrollToTechnicians()">
 
-        <span class="nav-icon">
-
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M4 21a8 8 0 0 1 16 0"/>
-                <path d="M4 11h3"/>
-                <path d="M17 11h3"/>
-            </svg>
-
-        </span>
-
+        <span class="nav-icon">👷</span>
         الفنيين
 
     </div>
@@ -933,12 +880,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ================= FIREBASE ================= */
+/* FIREBASE */
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyD4dDmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
+        "AIzaSyD4DdmuwC2qwL25O_Oi2jAOiVPD3QluaRQ",
 
     authDomain:
         "khedma-4e607.firebaseapp.com",
@@ -959,22 +906,61 @@ const firebaseConfig = {
         "G-WWB14VL9G3"
 };
 
+const app = initializeApp(firebaseConfig);
 
-const app =
-    initializeApp(firebaseConfig);
-
-const db =
-    getFirestore(app);
+const db = getFirestore(app);
 
 
-/* ================= DATA ================= */
+/* DATA */
 
 let technicians = [];
 
-let selectedService = "";
+
+/* SERVICE ICON */
+
+function getServiceIcon(service){
+
+    const s =
+        String(service || "").toLowerCase();
+
+    if(s.includes("سباك"))
+        return "🔧";
+
+    if(s.includes("كهرب"))
+        return "⚡";
+
+    if(
+        s.includes("تكييف") ||
+        s.includes("تبريد")
+    )
+        return "❄️";
+
+    if(s.includes("نجار"))
+        return "🪚";
+
+    if(
+        s.includes("دهان") ||
+        s.includes("نقاش")
+    )
+        return "🎨";
+
+    if(s.includes("نظاف"))
+        return "🧹";
+
+    if(s.includes("نقل"))
+        return "🚚";
+
+    if(
+        s.includes("جهاز") ||
+        s.includes("صيان")
+    )
+        return "🔌";
+
+    return "🛠️";
+}
 
 
-/* ================= LOAD ================= */
+/* LOAD */
 
 async function loadTechnicians(){
 
@@ -988,24 +974,18 @@ async function loadTechnicians(){
                 collection(db,"technicians")
             );
 
-
         technicians = [];
-
 
         snapshot.forEach(item => {
 
             const data = item.data();
-
-
-            /*
-             * العميل يرى الفنيين المتاحين فقط
-             */
 
             if(data.active === true){
 
                 technicians.push({
 
                     id:item.id,
+
                     ...data
 
                 });
@@ -1014,51 +994,39 @@ async function loadTechnicians(){
 
         });
 
-
         renderTechnicians(technicians);
-
 
     }catch(error){
 
         console.error(error);
 
-
         container.innerHTML = `
 
             <div class="empty">
 
-                <div class="empty-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"/>
-                        <path d="M12 8v4"/>
-                        <path d="M12 16h.01"/>
-                    </svg>
-
-                </div>
-
                 تعذر تحميل الفنيين.
+
                 <br>
+
                 حاول مرة أخرى.
 
             </div>
 
         `;
-
     }
-
 }
 
 
-/* ================= RENDER ================= */
+/* RENDER */
 
 function renderTechnicians(list){
 
     const container =
         document.getElementById("technicians");
 
-
-    document.getElementById("technicianCount").textContent =
+    document.getElementById(
+        "technicianCount"
+    ).textContent =
         `${list.length} فني`;
 
 
@@ -1068,99 +1036,74 @@ function renderTechnicians(list){
 
             <div class="empty">
 
-                <div class="empty-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M4 21a8 8 0 0 1 16 0"/>
-                    </svg>
-
-                </div>
-
-                لا يوجد فني متاح حاليًا لهذه الخدمة.
+                لا يوجد فني متاح حاليًا.
 
             </div>
 
         `;
 
         return;
-
     }
 
 
     container.innerHTML =
-        list.map(tech => createCard(tech)).join("");
-
+        list.map(
+            tech => createCard(tech)
+        ).join("");
 }
 
 
-/* ================= CARD ================= */
+/* CARD */
 
 function createCard(tech){
 
     const name =
-        escapeHTML(tech.name || "فني");
-
-
-    const service =
-        escapeHTML(tech.service || "");
-
-
-    const governorate =
         escapeHTML(
-            tech.governorate || "منشأة الدهب القبلية"
+            tech.name || "فني"
         );
 
+    const service =
+        escapeHTML(
+            tech.service || "خدمات"
+        );
 
-    const area =
-        escapeHTML(tech.area || "");
-
+    const rating =
+        tech.rating ?? 5;
 
     const phone =
         String(tech.phone || "")
         .replace(/[^\d+]/g,"");
 
-
-    const rating =
-        tech.rating ?? 5;
-
-
-    const initials =
-        getInitials(tech.name);
+    const icon =
+        getServiceIcon(
+            tech.service
+        );
 
 
     let price =
         "السعر حسب الخدمة";
 
-
     if(tech.price){
 
         price =
-            `يبدأ من <strong>${escapeHTML(
-                String(tech.price)
-            )} ج.م</strong>`;
-
+            `يبدأ من <strong>${
+                escapeHTML(
+                    String(tech.price)
+                )
+            } ج.م</strong>`;
     }
-
-
-    const whatsappNumber =
-        phone.replace(/^0/,"20");
-
-
-    const whatsappMessage =
-        encodeURIComponent(
-            `مرحباً ${tech.name || ""}، أريد الاستفسار عن خدمة ${tech.service || ""} من خلال منصة خِدمة.`
-        );
 
 
     return `
 
-        <article class="tech-card">
+        <article
+            class="tech-card"
+            onclick="openDetails('${tech.id}')">
 
             <div class="tech-main">
 
                 <div class="tech-avatar">
-                    ${initials}
+                    ${icon}
                 </div>
 
 
@@ -1170,36 +1113,21 @@ function createCard(tech){
                         ${name}
                     </h3>
 
-
                     <div class="tech-service">
                         ${service}
                     </div>
 
-
                     <div class="tech-location">
-
-                        <svg
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
-                            <circle cx="12" cy="10" r="2.5"/>
-                        </svg>
-
-                        ${governorate}
-                        ${area ? " - " + area : ""}
-
+                        📍 منشأة الدهب القبلية
                     </div>
 
                 </div>
 
 
                 <div class="rating">
-                    ⭐ ${escapeHTML(String(rating))}
+                    ⭐ ${escapeHTML(
+                        String(rating)
+                    )}
                 </div>
 
             </div>
@@ -1217,32 +1145,20 @@ function createCard(tech){
                     <a
                         class="action call"
                         href="tel:${phone}"
-                        aria-label="الاتصال بالفني"
-                    >
+                        onclick="event.stopPropagation()">
 
-                        <svg viewBox="0 0 24 24">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 5.18 2 2 0 0 1 5.06 3h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L9 10.73a16 16 0 0 0 4.27 4.27l1.27-1.23a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-
-                        اتصال
+                        📞 اتصال
 
                     </a>
 
 
                     <a
                         class="action whatsapp"
-                        href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}"
+                        href="${getWhatsAppLink(tech)}"
                         target="_blank"
-                        rel="noopener"
-                        aria-label="واتساب"
-                    >
+                        onclick="event.stopPropagation()">
 
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/>
-                            <path d="M8.5 8.5c.3 1.8 2.2 3.7 4 4 .6.1 1-.1 1.3-.6l.4-.7"/>
-                        </svg>
-
-                        واتساب
+                        💬 واتساب
 
                     </a>
 
@@ -1253,241 +1169,475 @@ function createCard(tech){
         </article>
 
     `;
-
 }
 
 
-/* ================= SEARCH ================= */
+/* DETAILS */
 
-document
-.getElementById("searchInput")
-.addEventListener("input",function(){
+window.openDetails = function(id){
 
-    const query =
-        this.value
-        .trim()
-        .toLowerCase();
-
-
-    if(!query){
-
-        selectedService = "";
-
-        document.getElementById("serviceResult").textContent =
-            "جميع الخدمات";
-
-        document.getElementById("techniciansTitle").textContent =
-            "الفنيين المتاحين";
-
-        document
-        .querySelectorAll(".service")
-        .forEach(item =>
-            item.classList.remove("active")
+    const tech =
+        technicians.find(
+            item => item.id === id
         );
 
-        renderTechnicians(technicians);
-
+    if(!tech)
         return;
+
+
+    const name =
+        escapeHTML(
+            tech.name || "فني"
+        );
+
+    const service =
+        escapeHTML(
+            tech.service || "خدمات"
+        );
+
+    const rating =
+        tech.rating ?? 5;
+
+    const phone =
+        String(tech.phone || "")
+        .replace(/[^\d+]/g,"");
+
+    const icon =
+        getServiceIcon(
+            tech.service
+        );
+
+
+    let priceText =
+        "السعر حسب الخدمة";
+
+    if(tech.price){
+
+        priceText =
+            escapeHTML(
+                String(tech.price)
+            ) + " ج.م";
 
     }
 
 
-    const filtered =
-        technicians.filter(tech => {
+    document.getElementById(
+        "detailsContent"
+    ).innerHTML = `
 
-            const text = [
+        <div class="details-card">
 
-                tech.name || "",
-                tech.service || "",
-                tech.governorate || "",
-                tech.area || ""
+            <div class="details-cover">
 
-            ]
-            .join(" ")
-            .toLowerCase();
+                <div class="details-avatar">
+                    ${icon}
+                </div>
 
-
-            return text.includes(query);
-
-        });
+            </div>
 
 
-    document.getElementById("serviceResult").textContent =
-        `نتائج البحث`;
+            <div class="details-content">
 
 
-    document.getElementById("techniciansTitle").textContent =
-        `نتائج البحث`;
+                <div class="details-name-row">
+
+                    <div>
+
+                        <div class="details-name">
+                            ${name}
+                        </div>
+
+                        <div class="details-service">
+                            ${icon} ${service}
+                        </div>
+
+                    </div>
 
 
-    renderTechnicians(filtered);
+                    <div class="details-rating">
 
-});
+                        ⭐ ${escapeHTML(
+                            String(rating)
+                        )}
 
+                    </div>
 
-/* ================= SERVICE FILTER ================= */
-
-document
-.querySelectorAll(".service")
-.forEach(service => {
-
-    service.addEventListener("click",function(){
-
-        const serviceName =
-            this.dataset.service;
+                </div>
 
 
-        selectedService =
-            serviceName;
+                <div class="details-info">
 
 
-        document
-        .getElementById("searchInput")
-        .value = "";
+                    <div class="info-box">
+
+                        <span class="info-icon">
+                            📍
+                        </span>
+
+                        <span class="info-label">
+                            القرية
+                        </span>
+
+                        <span class="info-value">
+                            منشأة الدهب القبلية
+                        </span>
+
+                    </div>
 
 
-        document
-        .querySelectorAll(".service")
-        .forEach(item =>
-            item.classList.remove("active")
-        );
+                    <div class="info-box">
+
+                        <span class="info-icon">
+                            📌
+                        </span>
+
+                        <span class="info-label">
+                            نطاق الخدمة
+                        </span>
+
+                        <span class="info-value">
+                            داخل القرية
+                        </span>
+
+                    </div>
 
 
-        this.classList.add("active");
+                    <div class="info-box">
+
+                        <span class="info-icon">
+                            ${icon}
+                        </span>
+
+                        <span class="info-label">
+                            التخصص
+                        </span>
+
+                        <span class="info-value">
+                            ${service}
+                        </span>
+
+                    </div>
 
 
-        const filtered =
-            technicians.filter(tech => {
+                    <div class="info-box">
 
-                const current =
-                    String(tech.service || "")
-                    .trim()
-                    .toLowerCase();
+                        <span class="info-icon">
+                            ⭐
+                        </span>
 
-                const wanted =
-                    serviceName
-                    .trim()
-                    .toLowerCase();
+                        <span class="info-label">
+                            التقييم
+                        </span>
 
-                return current === wanted;
+                        <span class="info-value">
+                            ${escapeHTML(
+                                String(rating)
+                            )} / 5
+                        </span>
 
-            });
+                    </div>
 
-
-        document.getElementById("serviceResult").textContent =
-            serviceName;
-
-
-        document.getElementById("techniciansTitle").textContent =
-            `فنيين ${serviceName}`;
+                </div>
 
 
-        renderTechnicians(filtered);
+                <div class="details-price">
+
+                    <span>
+                        السعر التقريبي
+                    </span>
+
+                    <strong>
+                        ${priceText}
+                    </strong>
+
+                </div>
 
 
-        scrollToTechnicians();
-
-    });
-
-});
+                <div class="details-actions">
 
 
-/* ================= NAVIGATION ================= */
+                    <a
+                        class="details-action details-call"
+                        href="tel:${phone}">
 
-window.goHome = function(element){
+                        📞 اتصال بالفني
+
+                    </a>
+
+
+                    <a
+                        class="details-action details-whatsapp"
+                        href="${getWhatsAppLink(tech)}"
+                        target="_blank">
+
+                        💬 واتساب
+
+                    </a>
+
+
+                </div>
+
+
+                <div class="details-note">
+
+                    يمكنك التواصل مع الفني مباشرة
+                    عبر الاتصال أو واتساب.
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
 
     document
-    .querySelectorAll(".nav-item")
-    .forEach(item =>
-        item.classList.remove("active")
-    );
+        .getElementById("homeView")
+        .classList.add("hidden");
 
-    element.classList.add("active");
 
-    document.getElementById("screen")
-    .scrollTo({
+    document
+        .getElementById("detailsView")
+        .classList.add("active");
+
+
+    document.querySelector(
+        ".bottom-nav"
+    ).style.display = "none";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+};
+
+
+/* CLOSE DETAILS */
+
+window.closeDetails = function(){
+
+    document
+        .getElementById("detailsView")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("homeView")
+        .classList.remove("hidden");
+
+
+    document.querySelector(
+        ".bottom-nav"
+    ).style.display = "flex";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+};
+
+
+/* HOME */
+
+window.goHome = function(){
+
+    closeDetails();
+
+    window.scrollTo({
         top:0,
         behavior:"smooth"
     });
-
 };
 
 
-window.scrollToServices = function(element){
+/* WHATSAPP */
 
-    document
-    .querySelectorAll(".nav-item")
-    .forEach(item =>
-        item.classList.remove("active")
-    );
+function getWhatsAppLink(tech){
 
-    element.classList.add("active");
+    let phone =
+        String(tech.phone || "")
+        .replace(/[^\d]/g,"");
 
 
-    document
-    .getElementById("servicesSection")
-    .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
+    if(phone.startsWith("0")){
 
-};
+        phone =
+            "20" +
+            phone.substring(1);
+
+    }
 
 
-window.scrollToTechnicians = function(element){
+    const message =
+        encodeURIComponent(
 
-    if(element){
+            `مرحباً ${tech.name || ""}، أريد الاستفسار عن خدمة ${tech.service || ""} من خلال منصة خِدمة.`
 
-        document
-        .querySelectorAll(".nav-item")
-        .forEach(item =>
-            item.classList.remove("active")
         );
 
-        element.classList.add("active");
 
-    }
-
-
-    document
-    .getElementById("techniciansSection")
-    .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-    });
-
-};
-
-
-/* ================= HELPERS ================= */
-
-function getInitials(name){
-
-    if(!name){
-        return "خ";
-    }
-
-
-    const parts =
-        String(name)
-        .trim()
-        .split(/\s+/);
-
-
-    if(parts.length >= 2){
-
-        return (
-            parts[0][0] +
-            parts[1][0]
-        );
-
-    }
-
-
-    return String(name).substring(0,2);
-
+    return `
+        https://wa.me/${phone}?text=${message}
+    `;
 }
 
+
+/* SEARCH */
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        function(){
+
+            const query =
+                this.value
+                .trim()
+                .toLowerCase();
+
+
+            const filtered =
+                technicians.filter(
+                    tech => {
+
+                        const text = [
+
+                            tech.name,
+                            tech.service
+
+                        ]
+                        .join(" ")
+                        .toLowerCase();
+
+
+                        return text.includes(
+                            query
+                        );
+
+                    }
+                );
+
+
+            document
+                .getElementById(
+                    "serviceResult"
+                )
+                .textContent =
+                    query
+                    ? `نتائج: ${this.value}`
+                    : "جميع الخدمات";
+
+
+            document
+                .getElementById(
+                    "techniciansTitle"
+                )
+                .textContent =
+                    "الفنيين المتاحين";
+
+
+            renderTechnicians(
+                filtered
+            );
+
+        }
+    );
+
+
+/* SERVICE FILTER */
+
+document
+    .querySelectorAll(".service")
+    .forEach(service => {
+
+        service.addEventListener(
+            "click",
+            function(){
+
+                const selectedService =
+                    this.dataset.service;
+
+
+                document
+                    .getElementById(
+                        "searchInput"
+                    )
+                    .value = "";
+
+
+                const filtered =
+                    technicians.filter(
+                        tech =>
+                            String(
+                                tech.service || ""
+                            )
+                            .trim()
+                            .toLowerCase()
+                            ===
+                            selectedService
+                            .trim()
+                            .toLowerCase()
+                    );
+
+
+                document
+                    .getElementById(
+                        "serviceResult"
+                    )
+                    .textContent =
+                        selectedService;
+
+
+                document
+                    .getElementById(
+                        "techniciansTitle"
+                    )
+                    .textContent =
+                        `فنيين ${selectedService}`;
+
+
+                renderTechnicians(
+                    filtered
+                );
+
+
+                scrollToTechnicians();
+
+            }
+        );
+
+    });
+
+
+/* SCROLL */
+
+window.scrollToServices = function(){
+
+    document
+        .querySelector(".services")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+};
+
+
+window.scrollToTechnicians = function(){
+
+    document
+        .getElementById("technicians")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+};
+
+
+/* HELPERS */
 
 function escapeHTML(value){
 
@@ -1502,7 +1652,7 @@ function escapeHTML(value){
 }
 
 
-/* ================= START ================= */
+/* START */
 
 loadTechnicians();
 
